@@ -11,7 +11,7 @@ from controller import log
 def findByXPath(driver, strElement, idElement):
     global element
     try:
-        # log.debug('Buscando ' + strElement)
+        log.degub('Buscando ' + strElement)
         element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, idElement))
         )
