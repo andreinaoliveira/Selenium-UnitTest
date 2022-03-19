@@ -12,14 +12,6 @@ class Element:
         self.class_reference = None
         self.css_reference = None
         self.xpath_reference = None
-        # self.id_element = reference if type == 'id' else None
-        # self.class_element = reference if type == 'class' else None
-        # self.css_element = reference if type == 'css' else None
-        # self.xpath_element = reference if type == 'xpath' else None
-
-    # @classmethod
-    # def set_id(cls, set_driver, set_name, set_id):
-    #    return cls(set_driver, set_name, 'id', set_id)
 
     ####################################################################################################################
     #                                                  FIND BY                                                         #
