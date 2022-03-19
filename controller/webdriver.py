@@ -17,6 +17,7 @@ class Element:
         self.as_class = None
         self.as_css = None
         self.as_xpath = None
+        self.as_text = None
 
     ####################################################################################################################
     #                                                  FIND BY                                                         #
@@ -98,6 +99,25 @@ class Element:
             log.info(self.name + ' Identificado(a)')
             return True
 
+    def find_by_text(self):
+        """
+        Encontra um elemento web.
+        :return: boolean
+        """
+        global element
+        try:
+            log.degub('Buscando ' + self.name)
+            element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, self.as_text))
+            )
+        except Exception as e:
+            log.error('Erro ao identificar ' + self.name)
+            print(e)
+            return False
+        else:
+            log.info(self.name + ' Identificado(a)')
+            return True
+
     ####################################################################################################################
     #                                                CLICK BY                                                          #
     ####################################################################################################################
@@ -145,6 +165,14 @@ class Element:
         Element.find_by_xpath(self)
         return Element._click(self)
 
+    def click_by_text(self):
+        """
+        Clica em um elemento web.
+        :return: boolean
+        """
+        Element.find_by_text(self)
+        return Element._click(self)
+
     ####################################################################################################################
     #                                                  SET BY                                                          #
     ####################################################################################################################
@@ -152,8 +180,6 @@ class Element:
     def _set(self, info):
         try:
             element.send_keys(info)
-            if self.name == 'Password':
-                element.send_keys(Keys.RETURN)
         except Exception as e:
             log.error('Erro ao escerver ' + self.name)
             print(e)
@@ -194,6 +220,15 @@ class Element:
         :return: boolean
         """
         Element.find_by_xpath(self)
+        return Element._set(self, info)
+
+    def set_by_text(self, info):
+        """
+        Insere uma informação em um elemento web.
+        :param info: informação
+        :return: boolean
+        """
+        Element.find_by_text(self)
         return Element._set(self, info)
 
     ####################################################################################################################
