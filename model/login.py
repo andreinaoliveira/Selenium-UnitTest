@@ -1,19 +1,43 @@
-from controller import webdriver
+from controller.webdriver import Element
 
-def setEmail(driver, getEmailOrNumber):
+def set_email(driver, email_or_number):
     """
-    Insere o email/telefone em 'Email ou número de telefone'
-    :param driver: webdriver
-    :param getEmailOrNumber: Email ou número de telefone
+    Insere o email ou telefone
+    :param driver:
+    :param email_or_number:
     :return: boolean
     """
-    return tryto.setByXPath(driver, 'Campo Email ou numero de telefone', '//*[@id="id_userLoginId"]', getEmailOrNumber)
+    e = Element(driver, 'email')
+    e.as_id = 'id_userLoginId'
+    return e.set_by_id(email_or_number)
 
-def setPassword(driver, getPassword):
+def set_password(driver, password):
     """
-    Insere a senha em 'Senha'
+    Insere senha
     :param driver: webdriver
-    :param getPassword: Senha
+    :param password: senha
+    :return:
+    """
+    p = Element(driver, 'password')
+    p.as_id = 'id_password'
+    return p.set_by_id(password)
+
+def click_sigin_welcome(driver):
+    """
+    Clica no botão Sign In da tela Welcome
+    :param driver: webdriver
     :return: boolean
     """
-    return tryto.setByXPath(driver, 'Campo Senha', '//*[@id="id_password"]"]', getPassword)
+    s = Element(driver, 'botão sign in de Welcome')
+    s.as_class = 'redButton'
+    return s.click_by_xpath()
+
+def click_signin_login(driver):
+    """
+    Clica no botão Sign In da tela Login
+    :param driver: webdriver
+    :return: boolean
+    """
+    s = Element(driver, 'botão sign in de Login')
+    s.as_class = 'login-button'
+    return s.click_by_xpath()
