@@ -1,4 +1,4 @@
-from controller import tryto
+from controller import webdriver
 
 def welcome(driver):
     return tryto.findByXPath(driver, 'Bem vindo',
