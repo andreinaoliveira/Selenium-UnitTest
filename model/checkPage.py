@@ -1,5 +1,12 @@
-from controller import webdriver
+from controller.webdriver import Element
+
 
 def welcome(driver):
-    return tryto.findByXPath(driver, 'Bem vindo',
-                             '//*[@id="appMountPoint"]/div/div/div/div/div/div[2]/div[1]/div[2]/h1')
+    """
+    Checa se o navegador está na página.
+    :param driver: webdriver
+    :return: boolean
+    """
+    w = Element(driver, 'Bem vindo')
+    w.as_class = 'our-story-card-title'
+    return w.find_by_class()
