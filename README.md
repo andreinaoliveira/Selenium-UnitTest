@@ -1,8 +1,30 @@
 # QA Base Automation
 Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e coma estrutura organizacional MTC (Model-Test-Controller), uma adaptação do MVC.
 
-## Sobre o projeto
-Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. O código está organizando em:
+Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. para cobrir os seguintes cenários de teste:
+- CT01 - Acessar tela de Boas Vinda
+- CT02 - Acessar tela de Login
+- CT03 - Senha Inválida
+- CT04 - Usuário Inválido
+- CT05 - Usuário Válido
+
+Tabela de conteúdos
+=================
+<!--ts-->
+   * [Sobre](#QA Base Automation)
+   * [Tabela de Conteudo](#Desenvolvimento)
+      * [controller/format.py](#controller/format.py)
+      * [controller/log.py](#controller/log.py)
+      * [controller/webdriver.py](#controller/webdriver.py)
+      * [model/login.py](#model/login.py)
+      * [test/test_login.py](#test/test_login.py)
+       * [Imports](#Imports)
+       * [UnitTest](#UnitTest)
+       * [Execução dos Cenários de Testes](#Execução dos Cenários de Testes)
+<!--te-->
+
+# 🖥Desenvolvimento
+O código está organizando em:
 - <b>controller</b>
   - <b>format</b>: Contem a formatação do título do teste. Será utilizado apenas em test.
   - <b>log</b>: Contem a formatação das mensagem de log nível debug, info e error. Será utilizada em webdriver.
@@ -152,7 +174,7 @@ As funções da página é dividida em:
   </table>
 </div>
 
-## model/test_login.py
+## test/test_login.py
 Onde os testes de fato irão ocorrer. Após controller ser escrito suportandos as instancias da página em model chega a hora de criar os casos de teste, para isso, será utilizado UnitTest.
 
 ### Imports
@@ -191,7 +213,7 @@ Ao final do teste o UnitTest informa quantos testes passaram e quantatos falhara
 </table>
 
 
-### Testes
+## Execução dos Cenários de Testes
 A parte mais simples do código, é a hora de definir os casos de teste. Vou exemplificar alguns cenários.
 
 **CT01 - Acessar tela de Boas Vindas**
@@ -207,6 +229,7 @@ A parte mais simples do código, é a hora de definir os casos de teste. Vou exe
 **-> Execução Assistida**
 
 **CT02 - Acessar tela de Login**
+
 **-> Código**
 
 ![image](https://user-images.githubusercontent.com/51168329/159300859-66a272aa-cf6f-403c-af5d-35d718069e3e.png)
@@ -218,6 +241,7 @@ A parte mais simples do código, é a hora de definir os casos de teste. Vou exe
 **-> Execução Assistida**
 
 **CT03 - Senha Inválida**
+
 **-> Código**
 
 ![image](https://user-images.githubusercontent.com/51168329/159300929-cdf0033d-c453-4e03-9df8-4c440a2bac59.png)
@@ -229,6 +253,7 @@ A parte mais simples do código, é a hora de definir os casos de teste. Vou exe
 **-> Execução Assistida**
 
 **CT04 - Usuário Inválido**
+
 **-> Código**
 
 ![image](https://user-images.githubusercontent.com/51168329/159300974-44870b91-cb37-4c7f-bed5-37e4dd9a2d24.png)
@@ -240,6 +265,7 @@ A parte mais simples do código, é a hora de definir os casos de teste. Vou exe
 **-> Execução Assistida**
 
 **CT05 - Usuário Válido**
+
 **-> Código**
 
 ![image](https://user-images.githubusercontent.com/51168329/159305882-35f93c6f-cbf9-4ad3-972e-d5c36cdf82d1.png)
