@@ -1,4 +1,4 @@
-# QA Base Automation
+# 🧪 QA Base Automation
 Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e coma estrutura organizacional MTC (Model-Test-Controller), uma adaptação do MVC.
 
 Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. para cobrir os seguintes cenários de teste:
@@ -8,20 +8,10 @@ Para exemplificar o funcionamento da base será automatizado a tela de login do 
 - CT04 - Usuário Inválido
 - CT05 - Usuário Válido
 
-Tabela de conteúdos
-=================
-<!--ts-->
-   * [Sobre](#QA Base Automation)
-   * [Tabela de Conteudo](#Desenvolvimento)
-      * [controller/format.py](#controller/format.py)
-      * [controller/log.py](#controller/log.py)
-      * [controller/webdriver.py](#controller/webdriver.py)
-      * [model/login.py](#model/login.py)
-      * [test/test_login.py](#test/test_login.py)
-       * [Imports](#Imports)
-       * [UnitTest](#UnitTest)
-       * [Execução dos Cenários de Testes](#Execução dos Cenários de Testes)
-<!--te-->
+# 📖 Índice
+- <a href="#qa-base-automation">QA Base Automatio</a>
+- <a href="#-índice">📖 Índice</a></li>
+
 
 # 🖥Desenvolvimento
 O código está organizando em:
