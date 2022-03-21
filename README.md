@@ -32,14 +32,15 @@ Em webdriver.py é criada a classe Element com os seguintes atribuitos e importa
 - name: nome do elemento ex.: Botão Sign In. O nome será enviado apenas nos log's. 
 - as_id/class/css/xpath/text: é a referência do elemento. É necessário atribuir valor a um dos itens para poder usar as funções da classe. 
 
+Para cada referência (id, class, css, xpath e text) há uma função find_by_*referencia*(), click_by_*referencia*() e set_by_*referencia*(). 
+
+A lógica da função para cada referência é a mesma, a diferença consta apenas quando o código tiver por exemplo "self.as_id" ou "By.ID" o temo "ID" deve ser substituído pela refereência correspondente a função, ou seja, find_by_xpath utilizada self.as_xpath e By.XPath.
+
+As funções da classe ao serem chamadas (find, click e set), executará as ações e retornará [True] ou [False] de acordo com o sucesso ou não da atividade. Portanto, além de executar a ação você poderá comparar o resultado, por exemplo, checar se retornou True, ou seja, checar se a ação executado com sucesso.
+
 ![image](https://user-images.githubusercontent.com/51168329/159277405-fc66fc4e-0098-4929-94a4-8551d7d63e0b.png)
 
 ### Find By
-Para cada referência (id, class, css, xpath e text) há uma função find_by_*referencia*(). A função para cada referência é a mesma, a diferença consta apenas em "self.as_id" e na linha 34 onde está "By.ID" que para ambos terá a referência de acordo com a função.
-
-Ao ser chamada, a função executará as ações e retornará [True] ou [False] de acordo com o sucesso ou não da atividade. Ou seja, além de executar a ação você poderá ter comparar o resultado, por exemplo, checar se retornou True, ou seja, checar se foi executado com sucesso.
-
-**Procedimento**
 1. A Função tenta localizar o elemento e envia um log informando essa tentativa
 2. Não encontrando, imprime o log de erro e retorna Falso.
 3. Encontrando, imprime log informando sucesso e retorna True
@@ -47,11 +48,6 @@ Ao ser chamada, a função executará as ações e retornará [True] ou [False] 
 ![image](https://user-images.githubusercontent.com/51168329/159278822-1b0475e5-5246-4c67-80b9-e97e671c6cc1.png)
 
 ### Click By
-Para cada referência (id, class, css, xpath e text) há uma função click_by_*referencia*(). A função para cada referência é a mesma, a diferença consta apenas na hora de chamar a função de busca que deverá ser de acordo com a referência, ou seja, chamando click_by_class() a função de busca deve ser find_by_class().
-
-Ao ser chamada, a função executará as ações e retornará [True] ou [False] de acordo com o sucesso ou não da atividade. Ou seja, além de executar a ação você poderá ter comparar o resultado, por exemplo, checar se retornou True, ou seja, checar se foi executado com sucesso.
-
-**Procedimento**
 1. Chama find_by_*referencia*()
 2. retorna Element._ click()
 3. Função _ click() tenta clicar no elemento
@@ -62,11 +58,6 @@ Ao ser chamada, a função executará as ações e retornará [True] ou [False] 
 
 
 ### Set By
-Para cada referência (id, class, css, xpath e text) há uma função set_by_*referencia*(). A função para cada referência é a mesma, a diferença consta apenas na hora de chamar a função de busca que deverá ser de acordo com a referência, ou seja, chamando set_by_xpath() a função de busca deve ser find_by_xpath().
-
-Ao ser chamada, a função executará as ações e retornará [True] ou [False] de acordo com o sucesso ou não da atividade. Ou seja, além de executar a ação você poderá ter comparar o resultado, por exemplo, checar se retornou True, ou seja, checar se foi executado com sucesso.
-
-**Procedimento**
 1. Chama find_by_*referencia*()
 2. retorna Element._ set()
 3. Função _ set() tenta clicar no elemento
@@ -75,3 +66,5 @@ Ao ser chamada, a função executará as ações e retornará [True] ou [False] 
 
 ![image](https://user-images.githubusercontent.com/51168329/159286842-b4dd4133-43dd-4e0b-aa1b-3f6314261a41.png)
 
+## model/login.py
+## model/test_login.py
