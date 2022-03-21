@@ -42,9 +42,14 @@ def titleTest(testName):
     print(testName.center(100))
     print(100 * '-')
 ```
-Exemplo da impressão:
 
-![image](https://user-images.githubusercontent.com/51168329/159273892-50ac6a3b-3e70-4928-b1f6-55da4d154d3c.png)
+Exemplo da impressão:
+```
+----------------------------------------------------------------------------------------------------
+                                 CT01 - Acessar tela de Boas Vindas                                 
+----------------------------------------------------------------------------------------------------
+```
+
 
 ### /log.py
 
@@ -181,55 +186,41 @@ As funções da página é dividida em:
 - Click: realiza o clique em qualquer elemento da página.
 - Set: Insere alguma informação na página.
 
-<div align="center">
-  <table>
-    <tr>
-      <td>
-        <b>Check</b>
-      </td>
-      <td>
-        <b>Click</b>
-      </td>
-      <td>
-        <b>Set</b>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <ol>
-          <li>Instancia o elemento passando o driver e o nome do elemento.</li>
-          <li>Atribuir o valor da referência.</li>
-          <li>Retorna a função find que busca a referência informada.</li>
-        </ol>
-      </td>
-      <td>
-        <ol>
-          <li>Instancia o elemento passando o driver e o nome do elemento.</li>
-          <li>Atribuir o valor da referência.</li>
-          <li>Retorna a função click que tentará clicar na referência informada.</li>
-        </ol>
-      </td>
-       <td>
-         <ol>
-          <li>Instancia o elemento passando o driver e o nome do elemento.</li>
-          <li>Atribuir o valor da referência.</li>
-          <li>Retorna a função set que tentará inserir uma informação na referência informada.</li>
-        </ol>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img src="https://user-images.githubusercontent.com/51168329/159297467-fd7b499a-fc48-4e4a-8dee-44b0b3f2d542.png">
-      </td>
-      <td>
-        <img src="https://user-images.githubusercontent.com/51168329/159297310-76b5d505-ba2c-4bbb-9f3a-b1ff1088c804.png">
-      </td>
-      <td>
-        <img src="https://user-images.githubusercontent.com/51168329/159297180-eb92ee9f-3267-4868-9991-9acd5ff3d728.png">
-      </td>
-    </tr>
-  </table>
-</div>
+### Check
+1. Instancia o elemento passando o driver e o nome do elemento.
+2. Atribuir o valor da referência.
+3. Retorna a função find que busca a referência informada.
+
+```python
+def check_page_welcome(driver):
+    p = Element(driver, 'Tela Welcome')
+    p.as_class = 'our-story-card-title'
+    return p.find_by_class()
+```
+
+### Click
+1. Instancia o elemento passando o driver e o nome do elemento.
+2. Atribuir o valor da referência.
+3. Retorna a função click que tentará clicar na referência informada.
+
+```python
+def click_signin_welcome(driver):
+    s = Element(driver, 'botão sign in de Welcome')
+    s.as_text = 'Sign In'
+    return s.click_by_text()
+```
+
+### Set
+1. Instancia o elemento passando o driver e o nome do elemento.
+2. Atribuir o valor da referência.
+3. Retorna a função set que tentará inserir uma informação na referência informada.
+
+```python
+def set_email(driver, email_or_number):
+    e = Element(driver, 'email')
+    e.as_id = 'id_userLoginId'
+    return e.set_by_id(email_or_number)
+```
 
 ## 🧪 Test
 Onde os testes de fato irão ocorrer. Após controller ser escrito suportando as instancias da página em model chega a hora de criar os casos de teste, para isso, será utilizado UnitTest. O teste será feiro com base no modelo login.py, portanto, o teste será chamado test_login.py
@@ -241,15 +232,32 @@ Como base para o teste, será importado:
 - página de model, no caso login
 - unittest.
 
-![image](https://user-images.githubusercontent.com/51168329/159299471-ca7f58d8-b85b-4802-ae0a-74853fce56cb.png)
+```python
+from selenium import webdriver
+from controller import format
+from model import login
+import unittest
+```
 
 ### UnitTest
 - setUp será executado para todos os testes como primeira atividade, será responsável por definir o driver e abrir o navegador.
 - tearDown fechará a página.
 
-![image](https://user-images.githubusercontent.com/51168329/159299415-f2b679d0-8594-4bb2-a63c-94ddf8306549.png)
+```python
+class test(unittest.TestCase):
+    def setUp(self):
+        self.driver = webdriver.Chrome('C:\Program Files (x86)\chromedriver.exe')
+        self.driver.get('https://www.netflix.com/br-en/')
+
+    def tearDown(self):
+        self.driver.quit()
+
+if __name__ == '__main__':
+    unittest.main()
+```
 
 Ao final do teste o UnitTest informa quantos testes passaram e quantatos falharam indicando qual teste deu erro
+
 <table>
   <tr>
     <td>
@@ -273,66 +281,105 @@ Ao final do teste o UnitTest informa quantos testes passaram e quantatos falhara
 ## 👩🏼‍💻 Cenários de Teste
 A parte mais simples do código, é a hora de definir os casos de teste. Vou exemplificar alguns cenários.
 
-**CT01 - Acessar tela de Boas Vindas**
+### CT01 - Acessar tela de Boas Vindas
 
-**-> Código**
+**Código**
+```python
+    def test_CT01_AccessWelcome(self):
+        format.titleTest("CT01 - Acessar tela de Boas Vindas")
+        self.assertTrue(login.check_page_welcome(self.driver))
+```
 
-![image](https://user-images.githubusercontent.com/51168329/159300717-932e6f76-7d1d-4e3c-b0f7-3bb194966937.png)
+**Log's**
 
-**-> Log's**
+<img src="https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png">
 
-![image](https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png)
+**Execução Assistida**
 
-**-> Execução Assistida**
+### CT02 - Acessar tela de Login
 
-**CT02 - Acessar tela de Login**
+**Código**
+```python
+    def test_CT02_AccessLogin(self):
+        format.titleTest("CT02 - Acessar tela de login")
+        login.click_signin_welcome(self.driver)
+        self.assertTrue(login.check_page_login(self.driver))
+```
 
-**-> Código**
+**Log's**
 
-![image](https://user-images.githubusercontent.com/51168329/159300859-66a272aa-cf6f-403c-af5d-35d718069e3e.png)
+<img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png">
 
-**-> Log's**
+**Execução Assistida**
 
-![image](https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png)
+### CT03 - Senha Inválida
 
-**-> Execução Assistida**
+**Código**
 
-**CT03 - Senha Inválida**
+```python
+    def test_CT03_InvalidPassword(self):
+        format.titleTest("CT03 - Senha inválida")
+        login.click_signin_welcome(self.driver)
+        login.set_email(self.driver, 'teste@gmail.com')
+        login.set_password(self.driver, 'Teste@1234')
+        login.click_signin_login(self.driver)
+        self.assertTrue(login.check_error_passwordInvalid(self.driver))
+```
 
-**-> Código**
+**Log's**
 
-![image](https://user-images.githubusercontent.com/51168329/159300929-cdf0033d-c453-4e03-9df8-4c440a2bac59.png)
-
-**-> Log's**
-
-![image](https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png)
-
-**-> Execução Assistida**
-
-**CT04 - Usuário Inválido**
-
-**-> Código**
-
-![image](https://user-images.githubusercontent.com/51168329/159300974-44870b91-cb37-4c7f-bed5-37e4dd9a2d24.png)
-
-**-> Log's**
-
-![image](https://user-images.githubusercontent.com/51168329/159303816-a1f2c023-0480-43f0-a23d-7a96c1f70477.png)
-
-**-> Execução Assistida**
-
-**CT05 - Usuário Válido**
-
-**-> Código**
-
-![image](https://user-images.githubusercontent.com/51168329/159305882-35f93c6f-cbf9-4ad3-972e-d5c36cdf82d1.png)
-
-**-> Log's**
-
-![image](https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png)
+<img src="https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png">
 
 **-> Execução Assistida**
-**-> Simulando erro**
 
-![image](https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png)
+### CT04 - Usuário Inválido
+
+**Código**
+
+```python
+    def test_CT04_InvalidAccount(self):
+        format.titleTest("CT04 - Usuário inválido")
+        login.click_signin_welcome(self.driver)
+        login.set_email(self.driver, 'testeSelenium@gmail.com')
+        login.set_password(self.driver, 'Teste@1234')
+        login.click_signin_login(self.driver)
+        self.assertTrue(login.check_error_userInvalid(self.driver))
+```
+
+**Log's**
+
+<img src="https://user-images.githubusercontent.com/51168329/159303816-a1f2c023-0480-43f0-a23d-7a96c1f70477.png">
+
+
+**Execução Assistida**
+
+### CT05 - Usuário Válido
+
+**Código**
+
+```python
+    def test_CT05_ValidUser(self):
+        format.titleTest("CT05 - Usuário Válido")
+        login.click_signin_welcome(self.driver)
+
+        email = input('Informe um e-mail váido: ')
+        senha = input('Informe uma senha válida: ')
+
+        print()
+
+        login.set_email(self.driver, email)
+        login.set_password(self.driver, senha)
+        login.click_signin_login(self.driver)
+        self.assertTrue(login.check_page_profiles(self.driver))
+```
+
+**Log's**
+
+<img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png">
+
+**Execução Assistida**
+
+**Simulando erro**
+
+<img src="https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png">
 
