@@ -1,4 +1,4 @@
-# 🧪QA Base Automation
+# QA Base Automation
 Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e coma estrutura organizacional MTC (Model-Test-Controller), uma adaptação do MVC.
 
 Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. para cobrir os seguintes cenários de teste:
@@ -8,14 +8,17 @@ Para exemplificar o funcionamento da base será automatizado a tela de login do 
 - CT04 - Usuário Inválido
 - CT05 - Usuário Válido
 
-# 📖Índice
-- <a href="#qa-base-automation"QA Base Automation</a>
-- <a href="#índice"Índice</a>
-- <a href="#desenvolvimento"Desenvolvimento</a>
-- <a href="#controller">Controller</a>
+# 🧾 Índice
+- <a href="#qa-base-automation">QA Base Automation</a>
+- <a href="#-índice">Índice</a>
+- <a href="#-desenvolvimento">Desenvolvimento</a>
+- <a href="#-controller">Controller</a>
+  - <a href="#formatpy">/fortmat.py</a>
+  - <a href="#logpy">/log.py</a>
+  - <a href="#webdriverpy">/webdriver.py</a>
 
 
-# 🖥Desenvolvimento
+# 🖥 Desenvolvimento
 O código está organizando em:
 - <b>controller</b>
   - <b>format</b>: Contem a formatação do título do teste. Será utilizado apenas em test.
@@ -24,7 +27,7 @@ O código está organizando em:
 - <b>model</b>: Cada arquivo .py dentro de model representa uma página do sistema web. E para cada página, é importando a classe Element de webdriver e transformado os principais itens da tela em uma instância da classe.
 - <b>test</b>: Onde os testes serão executados com UnitTest. O repositório de teste é bem livre para a criação de cenários. Para cada teste será necessário apenas declarar o driver em setUp, informar o título do teste com a função titleTest de format e importar a página que será testada em modelo.
 
-## 🎮Controller
+## 🕹 Controller
 
 ### /format.py
 Contem a função titleTest() recebendo testName. Recebendo o nome do teste, quando a função é chamada imprime o nome do teste de forma mais amigável no terminal. Essa função é chamado em test.
@@ -110,8 +113,8 @@ As funções da classe ao serem chamadas (find, click e set), executará as aç�
   </table>
 </div>
 
-## model/login.py
-Modelo armazena todas as páginas de um sistema web em aquivos .py diferentes. O ideal é que os principais elementos de uma página sejam instanciandos nesse arquivo através da classe Element de controller/webdriver.
+## ⚙️ Model
+Modelo armazena todas as páginas de um sistema web em aquivos .py diferentes. O ideal é que os principais elementos de uma página sejam instanciandos nesse arquivo através da classe Element de controller/webdriver. Para exemplificar, criamos o modelo da página de login da Netflix (login.py)
 
 As funções da página é dividida em: 
 - Check: Checa se está na página, checa se alguma mensagem de erro é apresentada etc.
@@ -168,8 +171,8 @@ As funções da página é dividida em:
   </table>
 </div>
 
-## test/test_login.py
-Onde os testes de fato irão ocorrer. Após controller ser escrito suportandos as instancias da página em model chega a hora de criar os casos de teste, para isso, será utilizado UnitTest.
+## 🧪 Test
+Onde os testes de fato irão ocorrer. Após controller ser escrito suportando as instancias da página em model chega a hora de criar os casos de teste, para isso, será utilizado UnitTest. O teste será feiro com base no modelo login.py, portanto, o teste será chamado test_login.py
 
 ### Imports
 Como base para o teste, será importado:
@@ -207,7 +210,7 @@ Ao final do teste o UnitTest informa quantos testes passaram e quantatos falhara
 </table>
 
 
-## Execução dos Cenários de Testes
+## 👩🏼‍💻 Cenários de Testes
 A parte mais simples do código, é a hora de definir os casos de teste. Vou exemplificar alguns cenários.
 
 **CT01 - Acessar tela de Boas Vindas**
