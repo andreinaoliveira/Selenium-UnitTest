@@ -84,8 +84,8 @@ def click_signin_login(driver):
 def set_email(driver, email_or_number):
     """
     Insere o email ou telefone
-    :param driver:
-    :param email_or_number:
+    :param driver: webdriver
+    :param email_or_number: e-mail ou número
     :return: boolean
     """
     e = Element(driver, 'email')
@@ -97,7 +97,7 @@ def set_password(driver, password):
     Insere senha
     :param driver: webdriver
     :param password: senha
-    :return:
+    :return: boolean
     """
     p = Element(driver, 'password')
     p.as_id = 'id_password'
