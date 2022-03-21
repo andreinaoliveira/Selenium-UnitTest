@@ -185,7 +185,7 @@ Ao final do teste o UnitTest informa quantos testes passaram e quantatos falhara
        <img src="https://user-images.githubusercontent.com/51168329/159310993-bce3a088-b03c-453c-a667-e2f8e425cf6d.png">
     </td>
     <td>
-       <img src="https://user-images.githubusercontent.com/51168329/159309952-2e2b7576-1517-4aea-8118-4181d84931bc.pn">
+       <img src="https://user-images.githubusercontent.com/51168329/159309952-2e2b7576-1517-4aea-8118-4181d84931bc.png">
     </td>
   </tr>
 </table>
@@ -195,60 +195,61 @@ Ao final do teste o UnitTest informa quantos testes passaram e quantatos falhara
 A parte mais simples do código, é a hora de definir os casos de teste. Vou exemplificar alguns cenários.
 
 **CT01 - Acessar tela de Boas Vindas**
-**Código**
+
+**-> Código**
 
 ![image](https://user-images.githubusercontent.com/51168329/159300717-932e6f76-7d1d-4e3c-b0f7-3bb194966937.png)
 
-**Log's**
+**-> Log's**
 
 ![image](https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png)
 
-**Execução Assistida**
+**-> Execução Assistida**
 
 **CT02 - Acessar tela de Login**
-**Código**
+**-> Código**
 
 ![image](https://user-images.githubusercontent.com/51168329/159300859-66a272aa-cf6f-403c-af5d-35d718069e3e.png)
 
-**Log's**
+**-> Log's**
 
 ![image](https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png)
 
-**Execução Assistida**
+**-> Execução Assistida**
 
 **CT03 - Senha Inválida**
-**Código**
+**-> Código**
 
 ![image](https://user-images.githubusercontent.com/51168329/159300929-cdf0033d-c453-4e03-9df8-4c440a2bac59.png)
 
-**Log's**
+**-> Log's**
 
 ![image](https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png)
 
-**Execução Assistida**
+**-> Execução Assistida**
 
 **CT04 - Usuário Inválido**
-**Código**
+**-> Código**
 
 ![image](https://user-images.githubusercontent.com/51168329/159300974-44870b91-cb37-4c7f-bed5-37e4dd9a2d24.png)
 
-**Log's**
+**-> Log's**
 
 ![image](https://user-images.githubusercontent.com/51168329/159303816-a1f2c023-0480-43f0-a23d-7a96c1f70477.png)
 
-**Execução Assistida**
+**-> Execução Assistida**
 
 **CT05 - Usuário Válido**
-**Código**
+**-> Código**
 
 ![image](https://user-images.githubusercontent.com/51168329/159305882-35f93c6f-cbf9-4ad3-972e-d5c36cdf82d1.png)
 
-**Log's**
+**-> Log's**
 
 ![image](https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png)
 
-**Execução Assistida**
-**Simulando erro**
+**-> Execução Assistida**
+**-> Simulando erro**
 
 ![image](https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png)
 
