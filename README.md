@@ -1,5 +1,5 @@
 # QA Base Automation
-Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e coma estrutura organizacional MTC (Model-Test-Controller), uma adaptação do MVC.
+Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e com a estrutura organizacional MTC (Model-Test-Controller), uma adaptação do MVC.
 
 Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. para cobrir os seguintes cenários de teste:
 - CT01 - Acessar tela de Boas Vinda
@@ -12,26 +12,28 @@ Para exemplificar o funcionamento da base será automatizado a tela de login do 
 - <a href="#qa-base-automation">QA Base Automation</a>
 - <a href="#-índice">Índice</a>
 - <a href="#-desenvolvimento">Desenvolvimento</a>
-- <a href="#-controller">Controller</a>
-  - <a href="#formatpy">/fortmat.py</a>
-  - <a href="#logpy">/log.py</a>
-  - <a href="#webdriverpy">/webdriver.py</a>
-- <a href="#-model">Model</a>
-- <a href="#-test">Test</a>
-  - <a href="#imports">Imports</a>
-  - <a href="#unittest">Unittest</a>
+  - <a href="#-controller">Controller</a>
+    - <a href="#formatpy">/fortmat.py</a>
+    - <a href="#logpy">/log.py</a>
+    - <a href="#webdriverpy">/webdriver.py</a>
+      - <a href="#find-by">Find By</a>
+      - <a href="#click-by">Click By</a>
+      - <a href="#set-by">Set By</a>
+  - <a href="#-model">Model</a>
+    - <a href="#check">Check</a>
+    - <a href="#click">Click</a>
+    - <a href="#set">Set</a>
+  - <a href="#-test">Test</a>
+    - <a href="#imports">Imports</a>
+    - <a href="#unittest">Unittest</a>
 - <a href="#-cenários-de-teste">Cenários de Teste</a>
-
+  - <a href="#ct01---acessar-tela-de-boas-vindas">CT01 - Acessar tela de Boas Vindas</a>
+  - <a href="#ct02---acessar-tela-de-login">CT02 - Acessar tela de Login</a>
+  - <a href="#ct03---senha-inválida">CT03 - Senha Inválida</a>
+  - <a href="#ct04---usuário-inválido">CT04 - Usuário Inválido</a>
+  - <a href="#ct05---usuário-válido">CT05 - Usuário Válido</a>
 
 # 🖥 Desenvolvimento
-O código está organizando em:
-- <b>controller</b>
-  - <b>format</b>: Contem a formatação do título do teste. Será utilizado apenas em test.
-  - <b>log</b>: Contem a formatação das mensagem de log nível debug, info e error. Será utilizada em webdriver.
-  - <b>webdriver</b>: A base do projeto, nela consta a classe Element que contém os principais atributos de um elemento web assim com as principais ações sobre eles: Find, Click e Set. Cada função da classe além de executar as ações retorna True ou False em relação ao sucesso da execução.
-- <b>model</b>: Cada arquivo .py dentro de model representa uma página do sistema web. E para cada página, é importando a classe Element de webdriver e transformado os principais itens da tela em uma instância da classe.
-- <b>test</b>: Onde os testes serão executados com UnitTest. O repositório de teste é bem livre para a criação de cenários. Para cada teste será necessário apenas declarar o driver em setUp, informar o título do teste com a função titleTest de format e importar a página que será testada em modelo.
-
 ## 🕹 Controller
 
 ### /format.py
@@ -330,7 +332,7 @@ A parte mais simples do código, é a hora de definir os casos de teste. Vou exe
 
 <img src="https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png">
 
-**-> Execução Assistida**
+**Execução Assistida**
 
 ### CT04 - Usuário Inválido
 
