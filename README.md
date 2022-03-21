@@ -36,9 +36,12 @@ O código está organizando em:
 
 ### /format.py
 Contem a função titleTest() recebendo testName. Recebendo o nome do teste, quando a função é chamada imprime o nome do teste de forma mais amigável no terminal. Essa função é chamado em test.
-
-![image](https://user-images.githubusercontent.com/51168329/159273023-2880848c-d6b8-454a-b2db-f8fe98f56021.png)
-
+```python
+def titleTest(testName):
+    print(100 * '-')
+    print(testName.center(100))
+    print(100 * '-')
+```
 Exemplo da impressão:
 
 ![image](https://user-images.githubusercontent.com/51168329/159273892-50ac6a3b-3e70-4928-b1f6-55da4d154d3c.png)
@@ -47,7 +50,21 @@ Exemplo da impressão:
 
 Importa a biblioteca de loggin e formata a mensagem de log. Nesse arquivo é criado as funções debug(), info() e error(). Cada função recebe a mensagem que será enviada como log. Essas funções são chamadas em webdriver.
 
-![image](https://user-images.githubusercontent.com/51168329/159275122-7bc33c6c-985a-47f3-9abb-8c4772db31ce.png)
+```python
+import logging
+log_format = '%(asctime)s :: %(name)s :: %(levelname)s :: %(module)s :: %(message)s'
+logging.basicConfig(format=log_format, level=logging.INFO, filemode='w')
+
+
+def degub(message):
+    logging.debug(message)
+
+def info(message):
+    logging.info(message)
+
+def error(message):
+    logging.error(message)
+```
 
 ### /webdriver.py
 
@@ -56,7 +73,24 @@ Em webdriver.py é criada a classe Element com os seguintes atribuitos e importa
 - name: nome do elemento ex.: Botão Sign In. O nome será enviado apenas nos log's. 
 - as_id/class/css/xpath/text: é a referência do elemento. É necessário atribuir valor a um dos itens para poder usar as funções da classe. 
 
-![image](https://user-images.githubusercontent.com/51168329/159277405-fc66fc4e-0098-4929-94a4-8551d7d63e0b.png)
+```python
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from controller import log
+```
+
+```python
+class Element:
+    def __init__(self, driver, name):
+        self.driver = driver
+        self.name = name
+        self.as_id = None
+        self.as_class = None
+        self.as_css = None
+        self.as_xpath = None
+        self.as_text = None
+```
 
 Para cada referência (id, class, css, xpath e text) há uma função find_by_*referencia*(), click_by_*referencia*() e set_by_*referencia*(). 
 
@@ -64,59 +98,80 @@ A lógica da função para cada referência é a mesma, a diferença consta apen
 
 As funções da classe ao serem chamadas (find, click e set), executará as ações e retornará [True] ou [False] de acordo com o sucesso ou não da atividade. Portanto, além de executar a ação você poderá comparar o resultado, por exemplo, checar se retornou True, ou seja, checar se a ação executado com sucesso.
 
-<div align="center">
-  <table>
-    <tr>
-      <td>
-        <b>Find By</b>
-      </td>
-      <td>
-        <b>Click By</b>
-      </td>
-      <td>
-        <b>Set By</b>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <ol>
-          <li>A Função tenta localizar o elemento e envia um log informando essa tentativa</li>
-          <li>Não encontrando, imprime o log de erro e retorna Falso.</li>
-          <li>Encontrando, imprime log informando sucesso e retorna True</li>
-        </ol>
-      </td>
-      <td>
-        <ol>
-          <li>Chama find_by_*referencia*()</li>
-          <li>Não encontrando, imprime o log de erro e retorna Falso</li>
-          <li>Função _ click() tenta clicar no elemento</li>
-          <li>Não conseguindo, imprime o log de erro e retorna Falso</li>
-          <li>Conseguindo, imprime log informando sucesso e retorna True</li>
-        </ol>
-      </td>
-       <td>
-         <ol>
-          <li>Chama find_by_*referencia*()</li>
-          <li>retorna Element._ set()</li>
-          <li>Função _ set() tenta clicar no elemento</li>
-          <li>Não conseguindo, imprime o log de erro e retorna Falso.</li>
-          <li>Conseguindo, imprime log informando sucesso e retorna True</li>
-        </ol>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img src="https://user-images.githubusercontent.com/51168329/159278822-1b0475e5-5246-4c67-80b9-e97e671c6cc1.png">
-      </td>
-      <td>
-        <img src="https://user-images.githubusercontent.com/51168329/159283809-18a0948c-e909-47ae-bb3c-aeceb5b192ad.png">
-      </td>
-      <td>
-        <img src="https://user-images.githubusercontent.com/51168329/159286842-b4dd4133-43dd-4e0b-aa1b-3f6314261a41.png">
-      </td>
-    </tr>
-  </table>
-</div>
+### Find by
+1. A Função tenta localizar o elemento e envia um log informando essa tentativa.
+2. Não encontrando, imprime o log de erro e retorna Falso.
+3. Encontrando, imprime log informando sucesso e retorna True.
+```python
+    def find_by_id(self):
+        """
+        Encontra um elemento web.
+        :return: boolean
+        """
+        global element
+        try:
+            log.degub('Buscando ' + self.name)
+            element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.ID, self.as_id))
+            )
+        except Exception as e:
+            log.error('Erro ao identificar ' + self.name)
+            print(e)
+            return False
+        else:
+            log.info(self.name + ' Identificado(a)')
+            return True
+```
+### Click by
+1. Chama find_by_*referencia*()
+2. Não encontrando, imprime o log de erro e retorna Falso
+3. Função _ click() tenta clicar no elemento.
+4. Não conseguindo, imprime o log de erro e retorna Falso
+5. Conseguindo, imprime log informando sucesso e retorna True
+
+```python
+    def _click(self):
+        try:
+            element.click()
+        except Exception as e:
+            log.error('Erro ao clicar em ' + self.name)
+            print(e)
+            return False
+        else:
+            log.info(self.name + ' Clicado(a)')
+            return True
+```
+
+```python
+    def click_by_id(self):
+        Element.find_by_id(self)
+        return Element._click(self)
+```
+
+### Set by
+1. Chama find_by_*referencia*().
+2. retorna Element._ set().
+3. Função _ set() tenta clicar no elemento.
+4. Não conseguindo, imprime o log de erro e retorna Falso.
+5. Conseguindo, imprime log informando sucesso e retorna True.
+
+```python
+    def _set(self, info):
+        try:
+            element.send_keys(info)
+        except Exception as e:
+            log.error('Erro ao escerver ' + self.name)
+            print(e)
+        else:
+            log.info(self.name + ' Inserido(a)')
+```
+
+```python
+    def set_by_class(self, info):
+        Element.find_by_class(self)
+        return Element._set(self, info)
+```
+
 
 ## 🔧 Model
 Modelo armazena todas as páginas de um sistema web em aquivos .py diferentes. O ideal é que os principais elementos de uma página sejam instanciandos nesse arquivo através da classe Element de controller/webdriver. Para exemplificar, criamos o modelo da página de login da Netflix (login.py)
