@@ -95,4 +95,61 @@ As funções da classe ao serem chamadas (find, click e set), executará as aç�
 </div>
 
 ## model/login.py
+Modelo armazena todas as páginas de um sistema web em aquivos .py diferentes. O ideal é que os principais elementos de uma página sejam instanciandos nesse arquivo através da classe Element de controller/webdriver.
+
+As funções da página é dividida em: 
+- Check: Checa se está na página, checa se alguma mensagem de erro é apresentada etc.
+- Click: realiza o clique em qualquer elemento da página.
+- Set: Insere alguma informação na página.
+
+<div align="center">
+  <table>
+    <tr>
+      <td>
+        <b>Check</b>
+      </td>
+      <td>
+        <b>Click</b>
+      </td>
+      <td>
+        <b>Set</b>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <ol>
+          <li>Instancia o elemento passando o driver e o nome do elemento.</li>
+          <li>Atribuir o valor da referência.</li>
+          <li>Retorna a função find que busca a referência informada.</li>
+        </ol>
+      </td>
+      <td>
+        <ol>
+          <li>Instancia o elemento passando o driver e o nome do elemento.</li>
+          <li>Atribuir o valor da referência.</li>
+          <li>Retorna a função click que tentará clicar na referência informada.</li>
+        </ol>
+      </td>
+       <td>
+         <ol>
+          <li>Instancia o elemento passando o driver e o nome do elemento.</li>
+          <li>Atribuir o valor da referência.</li>
+          <li>Retorna a função set que tentará inserir uma informação na referência informada.</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="https://user-images.githubusercontent.com/51168329/159297467-fd7b499a-fc48-4e4a-8dee-44b0b3f2d542.png">
+      </td>
+      <td>
+        <img src="https://user-images.githubusercontent.com/51168329/159297310-76b5d505-ba2c-4bbb-9f3a-b1ff1088c804.png">
+      </td>
+      <td>
+        <img src="https://user-images.githubusercontent.com/51168329/159297180-eb92ee9f-3267-4868-9991-9acd5ff3d728.png">
+      </td>
+    </tr>
+  </table>
+</div>
+
 ## model/test_login.py
