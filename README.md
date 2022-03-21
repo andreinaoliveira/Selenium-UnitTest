@@ -16,6 +16,11 @@ Para exemplificar o funcionamento da base será automatizado a tela de login do 
   - <a href="#formatpy">/fortmat.py</a>
   - <a href="#logpy">/log.py</a>
   - <a href="#webdriverpy">/webdriver.py</a>
+- <a href="#-model">Model</a>
+- <a href="#-test">Test</a>
+  - <a href="#imports">Imports</a>
+  - <a href="#unittest">Unittest</a>
+- <a href="#-cenários-de-teste">Cenários de Teste</a>
 
 
 # 🖥 Desenvolvimento
@@ -113,7 +118,7 @@ As funções da classe ao serem chamadas (find, click e set), executará as aç�
   </table>
 </div>
 
-## ⚙️ Model
+## 🔧 Model
 Modelo armazena todas as páginas de um sistema web em aquivos .py diferentes. O ideal é que os principais elementos de uma página sejam instanciandos nesse arquivo através da classe Element de controller/webdriver. Para exemplificar, criamos o modelo da página de login da Netflix (login.py)
 
 As funções da página é dividida em: 
@@ -210,7 +215,7 @@ Ao final do teste o UnitTest informa quantos testes passaram e quantatos falhara
 </table>
 
 
-## 👩🏼‍💻 Cenários de Testes
+## 👩🏼‍💻 Cenários de Teste
 A parte mais simples do código, é a hora de definir os casos de teste. Vou exemplificar alguns cenários.
 
 **CT01 - Acessar tela de Boas Vindas**
