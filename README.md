@@ -153,3 +153,102 @@ As funções da página é dividida em:
 </div>
 
 ## model/test_login.py
+Onde os testes de fato irão ocorrer. Após controller ser escrito suportandos as instancias da página em model chega a hora de criar os casos de teste, para isso, será utilizado UnitTest.
+
+### Imports
+Como base para o teste, será importado:
+- webdriver do próprio selenium
+- format de controller
+- página de model, no caso login
+- unittest.
+
+![image](https://user-images.githubusercontent.com/51168329/159299471-ca7f58d8-b85b-4802-ae0a-74853fce56cb.png)
+
+### UnitTest
+- setUp será executado para todos os testes como primeira atividade, será responsável por definir o driver e abrir o navegador.
+- tearDown fechará a página.
+
+![image](https://user-images.githubusercontent.com/51168329/159299415-f2b679d0-8594-4bb2-a63c-94ddf8306549.png)
+
+Ao final do teste o UnitTest informa quantos testes passaram e quantatos falharam indicando qual teste deu erro
+<table>
+  <tr>
+    <td>
+      <b>Passed</b>
+    </td>
+    <td>
+      <b>Fail</b>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <img src="https://user-images.githubusercontent.com/51168329/159310993-bce3a088-b03c-453c-a667-e2f8e425cf6d.png">
+    </td>
+    <td>
+       <img src="https://user-images.githubusercontent.com/51168329/159309952-2e2b7576-1517-4aea-8118-4181d84931bc.pn">
+    </td>
+  </tr>
+</table>
+
+
+### Testes
+A parte mais simples do código, é a hora de definir os casos de teste. Vou exemplificar alguns cenários.
+
+**CT01 - Acessar tela de Boas Vindas**
+**Código**
+
+![image](https://user-images.githubusercontent.com/51168329/159300717-932e6f76-7d1d-4e3c-b0f7-3bb194966937.png)
+
+**Log's**
+
+![image](https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png)
+
+**Execução Assistida**
+
+**CT02 - Acessar tela de Login**
+**Código**
+
+![image](https://user-images.githubusercontent.com/51168329/159300859-66a272aa-cf6f-403c-af5d-35d718069e3e.png)
+
+**Log's**
+
+![image](https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png)
+
+**Execução Assistida**
+
+**CT03 - Senha Inválida**
+**Código**
+
+![image](https://user-images.githubusercontent.com/51168329/159300929-cdf0033d-c453-4e03-9df8-4c440a2bac59.png)
+
+**Log's**
+
+![image](https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png)
+
+**Execução Assistida**
+
+**CT04 - Usuário Inválido**
+**Código**
+
+![image](https://user-images.githubusercontent.com/51168329/159300974-44870b91-cb37-4c7f-bed5-37e4dd9a2d24.png)
+
+**Log's**
+
+![image](https://user-images.githubusercontent.com/51168329/159303816-a1f2c023-0480-43f0-a23d-7a96c1f70477.png)
+
+**Execução Assistida**
+
+**CT05 - Usuário Válido**
+**Código**
+
+![image](https://user-images.githubusercontent.com/51168329/159305882-35f93c6f-cbf9-4ad3-972e-d5c36cdf82d1.png)
+
+**Log's**
+
+![image](https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png)
+
+**Execução Assistida**
+**Simulando erro**
+
+![image](https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png)
+
