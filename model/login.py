@@ -54,6 +54,30 @@ def check_error_passwordInvalid(driver):
     return e.find_by_text()
 
 ####################################################################################################################
+#                                                Click                                                             #
+####################################################################################################################
+
+def click_signin_welcome(driver):
+    """
+    Clica no botão Sign In da tela Welcome
+    :param driver: webdriver
+    :return: boolean
+    """
+    s = Element(driver, 'botão sign in de Welcome')
+    s.as_text = 'Sign In'
+    return s.click_by_text()
+
+def click_signin_login(driver):
+    """
+    Clica no botão Sign In da tela Login
+    :param driver: webdriver
+    :return: boolean
+    """
+    s = Element(driver, 'botão sign in de Login')
+    s.as_class = 'login-button'
+    return s.click_by_class()
+
+####################################################################################################################
 #                                                  SET                                                             #
 ####################################################################################################################
 
@@ -78,27 +102,3 @@ def set_password(driver, password):
     p = Element(driver, 'password')
     p.as_id = 'id_password'
     return p.set_by_id(password)
-
-####################################################################################################################
-#                                                Click                                                             #
-####################################################################################################################
-
-def click_signin_welcome(driver):
-    """
-    Clica no botão Sign In da tela Welcome
-    :param driver: webdriver
-    :return: boolean
-    """
-    s = Element(driver, 'botão sign in de Welcome')
-    s.as_text = 'Sign In'
-    return s.click_by_text()
-
-def click_signin_login(driver):
-    """
-    Clica no botão Sign In da tela Login
-    :param driver: webdriver
-    :return: boolean
-    """
-    s = Element(driver, 'botão sign in de Login')
-    s.as_class = 'login-button'
-    return s.click_by_class()
