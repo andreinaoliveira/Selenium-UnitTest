@@ -39,6 +39,8 @@ class test(unittest.TestCase):
 
         email = input('Informe um e-mail váido: ')
         senha = input('Informe uma senha válida: ')
+        
+        print()
 
         login.set_email(self.driver, email)
         login.set_password(self.driver, senha)
