@@ -18,12 +18,32 @@ class test(unittest.TestCase):
         self.assertTrue(login.check_page_login(self.driver))
 
     def test_CT03_InvalidAccount(self):
-        format.titleTest("CT03 - User e Password inválidos")
+        format.titleTest("CT03 - Usuário inválido")
         login.click_signin_welcome(self.driver)
         login.set_email(self.driver, 'testeSelenium@gmail.com')
         login.set_password(self.driver, 'Teste@1234')
         login.click_signin_login(self.driver)
-        self.assertTrue(login.check_userInvalid(self.driver))
+        self.assertTrue(login.check_error_userInvalid(self.driver))
+
+    def test_CT04_InvalidPassword(self):
+        format.titleTest("CT04 - Senha inválida")
+        login.click_signin_welcome(self.driver)
+        login.set_email(self.driver, 'teste@gmail.com')
+        login.set_password(self.driver, 'Teste@1234')
+        login.click_signin_login(self.driver)
+        self.assertTrue(login.check_error_passwordInvalid(self.driver))
+
+    def test_CT05_ValidUser(self):
+        format.titleTest("CT05 - Usuário Válido")
+        login.click_signin_welcome(self.driver)
+
+        email = input('Informe um e-mail váido: ')
+        senha = input('Informe uma senha válida: ')
+
+        login.set_email(self.driver, email)
+        login.set_password(self.driver, senha)
+        login.click_signin_login(self.driver)
+        self.assertTrue(login.check_page_profiles(self.driver))
 
     def tearDown(self):
         self.driver.quit()

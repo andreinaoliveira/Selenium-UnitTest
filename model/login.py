@@ -9,9 +9,9 @@ def check_page_welcome(driver):
     :param driver: webdriver
     :return: boolean
     """
-    w = Element(driver, 'Tela Welcome')
-    w.as_class = 'our-story-card-title'
-    return w.find_by_class()
+    p = Element(driver, 'Tela Welcome')
+    p.as_class = 'our-story-card-title'
+    return p.find_by_class()
 
 def check_page_login(driver):
     """
@@ -19,11 +19,21 @@ def check_page_login(driver):
     :param driver: webdriver
     :return: boolean
     """
-    l = Element(driver, 'Tela Login')
-    l.as_class = 'hybrid-login-form-main'
-    return l.find_by_class()
+    p = Element(driver, 'Tela Login')
+    p.as_class = 'hybrid-login-form-main'
+    return p.find_by_class()
 
-def check_userInvalid(driver):
+def check_page_profiles(driver):
+    """
+    Checa se o navegador está na página.
+    :param driver: webdriver
+    :return: boolean
+    """
+    p = Element(driver, 'Tela de Perfis')
+    p.as_class = 'profile-gate-label'
+    return p.find_by_class()
+
+def check_error_userInvalid(driver):
     """
     Checa se a mensagem de erro é apresentada.
     :param driver: webdriver
@@ -31,6 +41,16 @@ def check_userInvalid(driver):
     """
     e = Element(driver, 'create a new account')
     e.as_text = 'create a new account'
+    return e.find_by_text()
+
+def check_error_passwordInvalid(driver):
+    """
+    Checa se a mensagem de erro é apresentada.
+    :param driver: webdriver
+    :return: boolean
+    """
+    e = Element(driver, 'reset your password')
+    e.as_text = 'reset your password'
     return e.find_by_text()
 
 ####################################################################################################################
