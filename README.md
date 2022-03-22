@@ -353,7 +353,7 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
 
 **Log's**
 
-<img src="https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png" width=600px>
+<img src="https://user-images.githubusercontent.com/51168329/159393494-7d307bbe-d090-473f-b426-68631896d391.png" width=600px>
 
 ### CT04 - Usuário Inválido
 **Objetivo**
