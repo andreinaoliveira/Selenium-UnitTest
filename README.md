@@ -2,8 +2,8 @@
 <div align="center">
   <a href="https://github.com/andreinaoliveira/QA-Base-Automation/graphs/commit-activity"><img src="https://img.shields.io/github/last-commit/andreinaoliveira/qa-base-automation"></a>
   <a href="https://github.com/andreinaoliveira"><img src="https://img.shields.io/github/followers/andreinaoliveira?style=social"></a>
-  <a href="https://github.com/andreinaoliveira/QA-Base-Automation/network/members"><img src="https://img.shields.io/github/forks/andreinaoliveira/QA-Base-Automation?style=social"></a>
   <a href="https://github.com/andreinaoliveira/QA-Base-Automation/stargazers"><img src="https://img.shields.io/github/stars/andreinaoliveira/QA-Base-Automation?style=social"></a>
+  <a href="https://github.com/andreinaoliveira/QA-Base-Automation/network/members"><img src="https://img.shields.io/github/forks/andreinaoliveira/QA-Base-Automation?style=social"></a>
 </div>
 
 # 🧾 Índice
