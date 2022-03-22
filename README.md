@@ -1,16 +1,14 @@
-# QA Base Automation
-Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e com a estrutura organizacional MTC (Model-Test-Controller), uma adaptação do MVC.
-
-Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. para cobrir os seguintes cenários de teste:
-- CT01 - Acessar tela de Boas Vinda
-- CT02 - Acessar tela de Login
-- CT03 - Senha Inválida
-- CT04 - Usuário Inválido
-- CT05 - Usuário Válido
+![Purple and Yellow Colorful Gradient Motivational Quote LinkedIn Article Cover Image](https://user-images.githubusercontent.com/51168329/159381241-c0b2b316-22de-492c-9703-23e84e860551.png)
 
 # 🧾 Índice
-- <a href="#qa-base-automation">QA Base Automation</a>
+- <a href="#-sobre">Sobre</a>
 - <a href="#-índice">Índice</a>
+- <a href="#-cenários-de-teste">Cenários de Teste</a>
+  - <a href="#ct01---acessar-tela-de-boas-vindas">CT01 - Acessar tela de Boas Vindas</a>
+  - <a href="#ct02---acessar-tela-de-login">CT02 - Acessar tela de Login</a>
+  - <a href="#ct03---senha-inválida">CT03 - Senha Inválida</a>
+  - <a href="#ct04---usuário-inválido">CT04 - Usuário Inválido</a>
+  - <a href="#ct05---usuário-válido">CT05 - Usuário Válido</a>
 - <a href="#-desenvolvimento">Desenvolvimento</a>
   - <a href="#-controller">Controller</a>
     - <a href="#formatpy">/fortmat.py</a>
@@ -26,12 +24,129 @@ Para exemplificar o funcionamento da base será automatizado a tela de login do 
   - <a href="#-test">Test</a>
     - <a href="#imports">Imports</a>
     - <a href="#unittest">Unittest</a>
-- <a href="#-cenários-de-teste">Cenários de Teste</a>
-  - <a href="#ct01---acessar-tela-de-boas-vindas">CT01 - Acessar tela de Boas Vindas</a>
-  - <a href="#ct02---acessar-tela-de-login">CT02 - Acessar tela de Login</a>
-  - <a href="#ct03---senha-inválida">CT03 - Senha Inválida</a>
-  - <a href="#ct04---usuário-inválido">CT04 - Usuário Inválido</a>
-  - <a href="#ct05---usuário-válido">CT05 - Usuário Válido</a>
+
+# 💬 Sobre
+Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e com a estrutura organizacional MTC (Model-Test-Controller), uma adaptação do MVC.
+
+Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. para cobrir os seguintes cenários de teste:
+- CT01 - Acessar tela de Boas Vinda
+- CT02 - Acessar tela de Login
+- CT03 - Senha Inválida
+- CT04 - Usuário Inválido
+- CT05 - Usuário Válido
+
+
+## 👩🏼‍💻 Cenários de Teste
+### CT01 - Acessar tela de Boas Vindas
+**Objetivo**
+- Acessar o site da Netflix e checar se é carregada a tela de Boas Vindas.
+
+**Código**
+```python
+    def test_CT01_AccessWelcome(self):
+        format.titleTest("CT01 - Acessar tela de Boas Vindas")
+        self.assertTrue(login.check_page_welcome(self.driver))
+```
+
+**Log's**
+
+<img src="https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png">
+
+**Execução Assistida**
+
+### CT02 - Acessar tela de Login
+**Objetivo**
+- Acessar o site da Netflix, clicar em "Sign In" e checar se é carregada a tela de Login.
+
+**Código**
+```python
+    def test_CT02_AccessLogin(self):
+        format.titleTest("CT02 - Acessar tela de login")
+        login.click_signin_welcome(self.driver)
+        self.assertTrue(login.check_page_login(self.driver))
+```
+
+**Log's**
+
+<img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png">
+
+**Execução Assistida**
+
+### CT03 - Senha Inválida
+**Objetivo**
+- Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo um e-mail válido e senha inválida no site, checar se a mensagem referente a senha errada é apresentada.
+
+**Código**
+
+```python
+    def test_CT03_InvalidPassword(self):
+        format.titleTest("CT03 - Senha inválida")
+        login.click_signin_welcome(self.driver)
+        login.set_email(self.driver, 'teste@gmail.com')
+        login.set_password(self.driver, 'Teste@1234')
+        login.click_signin_login(self.driver)
+        self.assertTrue(login.check_error_passwordInvalid(self.driver))
+```
+
+**Log's**
+
+<img src="https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png">
+
+**Execução Assistida**
+
+### CT04 - Usuário Inválido
+**Objetivo**
+- Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo e-mail e senha com dados inexistente no site, checar se a mensagem de que o usuário não existe é apresentada.
+
+**Código**
+
+```python
+    def test_CT04_InvalidAccount(self):
+        format.titleTest("CT04 - Usuário inválido")
+        login.click_signin_welcome(self.driver)
+        login.set_email(self.driver, 'testeSelenium@gmail.com')
+        login.set_password(self.driver, 'Teste@1234')
+        login.click_signin_login(self.driver)
+        self.assertTrue(login.check_error_userInvalid(self.driver))
+```
+
+**Log's**
+
+<img src="https://user-images.githubusercontent.com/51168329/159303816-a1f2c023-0480-43f0-a23d-7a96c1f70477.png">
+
+
+**Execução Assistida**
+
+### CT05 - Usuário Válido
+**Objetivo**
+- Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo e-mail e senha com dados existentes no site e clicando em "Sign In", checar se a tela de Perfis é carregada.
+**Código**
+
+```python
+    def test_CT05_ValidUser(self):
+        format.titleTest("CT05 - Usuário Válido")
+        login.click_signin_welcome(self.driver)
+
+        email = input('Informe um e-mail váido: ')
+        senha = input('Informe uma senha válida: ')
+
+        print()
+
+        login.set_email(self.driver, email)
+        login.set_password(self.driver, senha)
+        login.click_signin_login(self.driver)
+        self.assertTrue(login.check_page_profiles(self.driver))
+```
+
+**Log's**
+
+<img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png">
+
+**Execução Assistida**
+
+**Simulando erro**
+
+<img src="https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png">
 
 # 🖥 Desenvolvimento
 ## 🕹 Controller
@@ -278,110 +393,3 @@ Ao final do teste o UnitTest informa quantos testes passaram e quantatos falhara
     </td>
   </tr>
 </table>
-
-
-## 👩🏼‍💻 Cenários de Teste
-A parte mais simples do código, é a hora de definir os casos de teste. Vou exemplificar alguns cenários.
-
-### CT01 - Acessar tela de Boas Vindas
-
-**Código**
-```python
-    def test_CT01_AccessWelcome(self):
-        format.titleTest("CT01 - Acessar tela de Boas Vindas")
-        self.assertTrue(login.check_page_welcome(self.driver))
-```
-
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png">
-
-**Execução Assistida**
-
-### CT02 - Acessar tela de Login
-
-**Código**
-```python
-    def test_CT02_AccessLogin(self):
-        format.titleTest("CT02 - Acessar tela de login")
-        login.click_signin_welcome(self.driver)
-        self.assertTrue(login.check_page_login(self.driver))
-```
-
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png">
-
-**Execução Assistida**
-
-### CT03 - Senha Inválida
-
-**Código**
-
-```python
-    def test_CT03_InvalidPassword(self):
-        format.titleTest("CT03 - Senha inválida")
-        login.click_signin_welcome(self.driver)
-        login.set_email(self.driver, 'teste@gmail.com')
-        login.set_password(self.driver, 'Teste@1234')
-        login.click_signin_login(self.driver)
-        self.assertTrue(login.check_error_passwordInvalid(self.driver))
-```
-
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png">
-
-**Execução Assistida**
-
-### CT04 - Usuário Inválido
-
-**Código**
-
-```python
-    def test_CT04_InvalidAccount(self):
-        format.titleTest("CT04 - Usuário inválido")
-        login.click_signin_welcome(self.driver)
-        login.set_email(self.driver, 'testeSelenium@gmail.com')
-        login.set_password(self.driver, 'Teste@1234')
-        login.click_signin_login(self.driver)
-        self.assertTrue(login.check_error_userInvalid(self.driver))
-```
-
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159303816-a1f2c023-0480-43f0-a23d-7a96c1f70477.png">
-
-
-**Execução Assistida**
-
-### CT05 - Usuário Válido
-
-**Código**
-
-```python
-    def test_CT05_ValidUser(self):
-        format.titleTest("CT05 - Usuário Válido")
-        login.click_signin_welcome(self.driver)
-
-        email = input('Informe um e-mail váido: ')
-        senha = input('Informe uma senha válida: ')
-
-        print()
-
-        login.set_email(self.driver, email)
-        login.set_password(self.driver, senha)
-        login.click_signin_login(self.driver)
-        self.assertTrue(login.check_page_profiles(self.driver))
-```
-
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png">
-
-**Execução Assistida**
-
-**Simulando erro**
-
-<img src="https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png">
-
