@@ -310,6 +310,8 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
 
 **Execução Assistida**
 
+<img src="https://user-images.githubusercontent.com/51168329/159390569-8cfff750-2593-421f-9b83-dc04d3e375a0.gif" width=600px>
+
 ### CT02 - Acessar tela de Login
 **Objetivo**
 - Acessar o site da Netflix, clicar em "Sign In" e checar se é carregada a tela de Login.
@@ -321,12 +323,13 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
         login.click_signin_welcome(self.driver)
         self.assertTrue(login.check_page_login(self.driver))
 ```
+**Execução Assistida**
+
+<img src="https://user-images.githubusercontent.com/51168329/159391105-1be2aa4f-1808-48b6-8cd0-5c4ef811b470.gif" width=600px>
 
 **Log's**
 
 <img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png">
-
-**Execução Assistida**
 
 ### CT03 - Senha Inválida
 **Objetivo**
@@ -344,11 +347,13 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
         self.assertTrue(login.check_error_passwordInvalid(self.driver))
 ```
 
+**Execução Assistida**
+                                                                                                                
+<img src="https://user-images.githubusercontent.com/51168329/159392417-3f95dfeb-8e5d-45d6-8dae-6b55e0d0c963.gif" width=600px>
+
 **Log's**
 
 <img src="https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png">
-
-**Execução Assistida**
 
 ### CT04 - Usuário Inválido
 **Objetivo**
@@ -366,13 +371,15 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
         self.assertTrue(login.check_error_userInvalid(self.driver))
 ```
 
+**Execução Assistida**
+
+<img src="https://user-images.githubusercontent.com/51168329/159392369-420cc93b-d050-49ca-8fc1-a2dff3a1937e.gif" width=600px>
+
 **Log's**
 
 <img src="https://user-images.githubusercontent.com/51168329/159303816-a1f2c023-0480-43f0-a23d-7a96c1f70477.png">
 
-
-**Execução Assistida**
-
+                                                                                                             
 ### CT05 - Usuário Válido
 **Objetivo**
 - Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo e-mail e senha com dados existentes no site e clicando em "Sign In", checar se a tela de Perfis é carregada.
@@ -394,11 +401,12 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
         self.assertTrue(login.check_page_profiles(self.driver))
 ```
 
+**Execução Assistida**
+
 **Log's**
 
 <img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png">
 
-**Execução Assistida**
 
 **Simulando erro**
 
