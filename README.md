@@ -304,13 +304,13 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
         self.assertTrue(login.check_page_welcome(self.driver))
 ```
 
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png">
-
 **Execução Assistida**
 
 <img src="https://user-images.githubusercontent.com/51168329/159390569-8cfff750-2593-421f-9b83-dc04d3e375a0.gif" width=600px>
+
+**Log's**
+
+<img src="https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png" width=600px>
 
 ### CT02 - Acessar tela de Login
 **Objetivo**
@@ -329,7 +329,7 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
 
 **Log's**
 
-<img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png">
+<img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png" width=600px>
 
 ### CT03 - Senha Inválida
 **Objetivo**
@@ -353,7 +353,7 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
 
 **Log's**
 
-<img src="https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png">
+<img src="https://user-images.githubusercontent.com/51168329/159303756-a7477632-6ddc-4d93-b6d9-30408d0446ae.png" width=600px>
 
 ### CT04 - Usuário Inválido
 **Objetivo**
@@ -377,7 +377,7 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
 
 **Log's**
 
-<img src="https://user-images.githubusercontent.com/51168329/159303816-a1f2c023-0480-43f0-a23d-7a96c1f70477.png">
+<img src="https://user-images.githubusercontent.com/51168329/159303816-a1f2c023-0480-43f0-a23d-7a96c1f70477.png" width=600px>
 
                                                                                                              
 ### CT05 - Usuário Válido
@@ -405,9 +405,9 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
 
 **Log's**
 
-<img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png">
+<img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png" width=600px>
 
 
 **Simulando erro**
 
-<img src="https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png">
+<img src="https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png" width=600px>
