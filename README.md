@@ -1,9 +1,9 @@
 ![Purple and Yellow Colorful Gradient Motivational Quote LinkedIn Article Cover Image](https://user-images.githubusercontent.com/51168329/159381241-c0b2b316-22de-492c-9703-23e84e860551.png)
 <div align="center">
-  <img src="https://img.shields.io/github/last-commit/andreinaoliveira/qa-base-automation">
-  <img src="https://img.shields.io/github/followers/andreinaoliveira?style=social">
-  <img src="https://img.shields.io/github/forks/andreinaoliveira/QA-Base-Automation?style=social">
-  <img src="https://img.shields.io/github/stars/andreinaoliveira/QA-Base-Automation?style=social">
+  <a href="https://github.com/andreinaoliveira/QA-Base-Automation/graphs/commit-activity"><img src="https://img.shields.io/github/last-commit/andreinaoliveira/qa-base-automation"></a>
+  <a href="https://github.com/andreinaoliveira"><img src="https://img.shields.io/github/followers/andreinaoliveira?style=social"></a>
+  <a href="https://github.com/andreinaoliveira/QA-Base-Automation/network/members"><img src="https://img.shields.io/github/forks/andreinaoliveira/QA-Base-Automation?style=social"></a>
+  <a href="https://github.com/andreinaoliveira/QA-Base-Automation/stargazers"><img src="https://img.shields.io/github/stars/andreinaoliveira/QA-Base-Automation?style=social"></a>
 </div>
 
 # 🧾 Índice
