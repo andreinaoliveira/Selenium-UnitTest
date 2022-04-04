@@ -69,7 +69,7 @@ class Element:
         try:
             log.degub('Buscando ' + self.name)
             element = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.CLASS_NAME, self.as_css))
+                EC.presence_of_element_located((By.CSS_SELECTOR, self.as_css))
             )
         except Exception as e:
             log.error('Erro ao identificar ' + self.name)
@@ -182,8 +182,10 @@ class Element:
         except Exception as e:
             log.error('Erro ao escerver ' + self.name)
             print(e)
+            return False
         else:
             log.info(self.name + ' Inserido(a)')
+            return True
 
     def set_by_id(self, info):
         """
