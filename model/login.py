@@ -10,8 +10,8 @@ def check_page_welcome(driver):
     :return: boolean
     """
     p = Element(driver, 'Tela Welcome')
-    p.as_class = 'our-story-card-title'
-    return p.find_by_class()
+    p.as_2_class = 'our-story-card-title'
+    return p.findBy_Class()
 
 def check_page_login(driver):
     """
@@ -20,8 +20,8 @@ def check_page_login(driver):
     :return: boolean
     """
     p = Element(driver, 'Tela Login')
-    p.as_class = 'hybrid-login-form-main'
-    return p.find_by_class()
+    p.as_2_class = 'hybrid-login-form-main'
+    return p.findBy_Class()
 
 def check_page_profiles(driver):
     """
@@ -30,8 +30,8 @@ def check_page_profiles(driver):
     :return: boolean
     """
     p = Element(driver, 'Tela de Perfis')
-    p.as_class = 'profile-gate-label'
-    return p.find_by_class()
+    p.as_2_class = 'profile-gate-label'
+    return p.findBy_Class()
 
 def check_error_userInvalid(driver):
     """
@@ -40,7 +40,7 @@ def check_error_userInvalid(driver):
     :return: boolean
     """
     e = Element(driver, 'create a new account')
-    e.as_text = 'create a new account'
+    e.as_5_text = 'create a new account'
     return e.find_by_text()
 
 def check_error_passwordInvalid(driver):
@@ -50,7 +50,7 @@ def check_error_passwordInvalid(driver):
     :return: boolean
     """
     e = Element(driver, 'reset your password')
-    e.as_text = 'reset your password'
+    e.as_5_text = 'reset your password'
     return e.find_by_text()
 
 ####################################################################################################################
@@ -64,7 +64,7 @@ def click_signin_welcome(driver):
     :return: boolean
     """
     s = Element(driver, 'botão sign in de Welcome')
-    s.as_text = 'Sign In'
+    s.as_5_text = 'Sign In'
     return s.click_by_text()
 
 def click_signin_login(driver):
@@ -74,7 +74,7 @@ def click_signin_login(driver):
     :return: boolean
     """
     s = Element(driver, 'botão sign in de Login')
-    s.as_class = 'login-button'
+    s.as_2_class = 'login-button'
     return s.click_by_class()
 
 ####################################################################################################################
@@ -89,7 +89,7 @@ def set_email(driver, email_or_number):
     :return: boolean
     """
     e = Element(driver, 'email')
-    e.as_id = 'id_userLoginId'
+    e.as_1_id = 'id_userLoginId'
     return e.set_by_id(email_or_number)
 
 def set_password(driver, password):
@@ -100,5 +100,5 @@ def set_password(driver, password):
     :return: boolean
     """
     p = Element(driver, 'password')
-    p.as_id = 'id_password'
+    p.as_1_id = 'id_password'
     return p.set_by_id(password)

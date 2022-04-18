@@ -1,3 +1,6 @@
+import os
+import sys
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -6,109 +9,78 @@ from controller import log
 class Element:
     def __init__(self, driver, name):
         """
-        Instanciar um elemento web. Necessário atribuir valor a um dos atributos 'instancia.as_'
+        Instanciar um elemento web. Necessário atribuir valor a um dos atributos 'instancia.as_...'
         :param driver: Webdriver
         :param name: Apelido
         """
         self.driver = driver
         self.name = name
-        self.as_id = None
-        self.as_class = None
-        self.as_css = None
-        self.as_xpath = None
-        self.as_text = None
+        self.element = None
+        self.as_1_ID = None
+        self.as_2_CLASS_NAME = None
+        self.as_3_NAME = None
+        self.as_4_TAG_NAME = None
+        self.as_5_LINK_TEXT = None
+        self.as_6_PARTIAL_LINK_TEXT = None
+        self.as_7_CSS_SELECTOR = None
+        self.as_8_XPATH = None
 
     ####################################################################################################################
     #                                                  FIND BY                                                         #
     ####################################################################################################################
 
-    def find_by_id(self):
+    def _code(self, code):
         """
-        Encontra um elemento web.
-        :return: boolean
+        Recebe o código e direciona para a ação respectiva de localizar um elemento e armazena em self.element da classe
+        :param code: Tipo do elemento. Codigo localizado em 'as_COD_...'
+        :return: None
         """
-        global element
-        try:
-            log.degub('Buscando ' + self.name)
-            element = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.ID, self.as_id))
+        if code == 1:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.ID, self.as_1_ID))
             )
-        except Exception as e:
-            log.error('Erro ao identificar ' + self.name)
-            print(e)
-            return False
+        elif code == 2:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, self.as_2_CLASS_NAME))
+            )
+        elif code == 3:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.NAME, self.as_3_NAME))
+            )
+        elif code == 4:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.TAG_NAME, self.as_4_TAG_NAME))
+            )
+        elif code == 5:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.LINK_TEXT, self.as_5_LINK_TEXT))
+            )
+        elif code == 6:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, self.as_6_PARTIAL_LINK_TEXT))
+            )
+        elif code == 7:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, self.as_7_CSS_SELECTOR))
+            )
+        elif code == 8:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, self.as_8_XPATH))
+            )
         else:
-            log.info(self.name + ' Identificado(a)')
-            return True
+            log.error('Código informado em find() fora do range ou inválido.')
+            os.system("pause")
+            sys.exit()
 
-    def find_by_class(self):
+    def find(self, code):
         """
         Encontra um elemento web.
+        :param code: Tipo do elemento. Codigo localizado em 'as_COD_...'
         :return: boolean
         """
-        global element
         try:
             log.degub('Buscando ' + self.name)
-            element = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.CLASS_NAME, self.as_class))
-            )
-        except Exception as e:
-            log.error('Erro ao identificar ' + self.name)
-            print(e)
-            return False
-        else:
-            log.info(self.name + ' Identificado(a)')
-            return True
-
-    def find_by_css(self):
-        """
-        Encontra um elemento web.
-        :return: boolean
-        """
-        global element
-        try:
-            log.degub('Buscando ' + self.name)
-            element = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, self.as_css))
-            )
-        except Exception as e:
-            log.error('Erro ao identificar ' + self.name)
-            print(e)
-            return False
-        else:
-            log.info(self.name + ' Identificado(a)')
-            return True
-
-    def find_by_xpath(self):
-        """
-        Encontra um elemento web.
-        :return: boolean
-        """
-        global element
-        try:
-            log.degub('Buscando ' + self.name)
-            element = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, self.as_xpath))
-            )
-        except Exception as e:
-            log.error('Erro ao identificar ' + self.name)
-            print(e)
-            return False
-        else:
-            log.info(self.name + ' Identificado(a)')
-            return True
-
-    def find_by_text(self):
-        """
-        Encontra um elemento web.
-        :return: boolean
-        """
-        global element
-        try:
-            log.degub('Buscando ' + self.name)
-            element = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, self.as_text))
-            )
+            self._code(code)
         except Exception as e:
             log.error('Erro ao identificar ' + self.name)
             print(e)
@@ -121,9 +93,15 @@ class Element:
     #                                                CLICK BY                                                          #
     ####################################################################################################################
 
-    def _click(self):
+    def click(self, code):
+        """
+        Clica em um elemento web.
+        :param code: Tipo do elemento. Codigo localizado em 'as_COD_...'
+        :return: boolean
+        """
+        Element.find(self, code)
         try:
-            element.click()
+            self.element.click()
         except Exception as e:
             log.error('Erro ao clicar em ' + self.name)
             print(e)
@@ -132,53 +110,20 @@ class Element:
             log.info(self.name + ' Clicado(a)')
             return True
 
-    def click_by_id(self):
-        """
-        Clica em um elemento web.
-        :return: boolean
-        """
-        Element.find_by_id(self)
-        return Element._click(self)
-
-    def click_by_class(self):
-        """
-        Clica em um elemento web.
-        :return: boolean
-        """
-        Element.find_by_class(self)
-        return Element._click(self)
-
-    def click_by_css(self):
-        """
-        Clica em um elemento web.
-        :return: boolean
-        """
-        Element.find_by_css(self)
-        return Element._click(self)
-
-    def click_by_xpath(self):
-        """
-        Clica em um elemento web.
-        :return: boolean
-        """
-        Element.find_by_xpath(self)
-        return Element._click(self)
-
-    def click_by_text(self):
-        """
-        Clica em um elemento web.
-        :return: boolean
-        """
-        Element.find_by_text(self)
-        return Element._click(self)
-
     ####################################################################################################################
     #                                                  SET BY                                                          #
     ####################################################################################################################
 
-    def _set(self, info):
+    def set(self, code, info):
+        """
+        Insere uma informação em um elemento web.
+        :param code: Tipo do elemento. Codigo localizado em 'as_COD_...'
+        :param info: informação
+        :return: boolean
+        """
+        Element.find(self, code)
         try:
-            element.send_keys(info)
+            self.element.send_keys(info)
         except Exception as e:
             log.error('Erro ao escerver ' + self.name)
             print(e)
@@ -186,51 +131,6 @@ class Element:
         else:
             log.info(self.name + ' Inserido(a)')
             return True
-
-    def set_by_id(self, info):
-        """
-        Insere uma informação em um elemento web.
-        :param info: informação
-        :return: boolean
-        """
-        Element.find_by_id(self)
-        return Element._set(self, info)
-
-    def set_by_class(self, info):
-        """
-        Insere uma informação em um elemento web.
-        :param info: informação
-        :return: boolean
-        """
-        Element.find_by_class(self)
-        return Element._set(self, info)
-
-    def set_by_css(self, info):
-        """
-        Insere uma informação em um elemento web.
-        :param info: informação
-        :return: boolean
-        """
-        Element.find_by_css(self)
-        return Element._set(self, info)
-
-    def set_by_xpath(self, info):
-        """
-        Insere uma informação em um elemento web.
-        :param info: informação
-        :return: boolean
-        """
-        Element.find_by_xpath(self)
-        return Element._set(self, info)
-
-    def set_by_text(self, info):
-        """
-        Insere uma informação em um elemento web.
-        :param info: informação
-        :return: boolean
-        """
-        Element.find_by_text(self)
-        return Element._set(self, info)
 
     ####################################################################################################################
     #                                                  GET BY                                                          #

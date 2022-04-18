@@ -118,25 +118,26 @@ As funções da classe ao serem chamadas (find, click e set), executará as aç�
 1. A Função tenta localizar o elemento e envia um log informando essa tentativa.
 2. Não encontrando, imprime o log de erro e retorna Falso.
 3. Encontrando, imprime log informando sucesso e retorna True.
+
 ```python
-    def find_by_id(self):
-        """
-        Encontra um elemento web.
-        :return: boolean
-        """
-        global element
-        try:
-            log.degub('Buscando ' + self.name)
-            element = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.ID, self.as_id))
-            )
-        except Exception as e:
-            log.error('Erro ao identificar ' + self.name)
-            print(e)
-            return False
-        else:
-            log.info(self.name + ' Identificado(a)')
-            return True
+    def findBy_ID(self):
+  """
+  Encontra um elemento web.
+  :return: boolean
+  """
+  global element
+  try:
+    log.degub('Buscando ' + self.name)
+    element = WebDriverWait(self.driver, 10).until(
+      EC.presence_of_element_located((By.ID, self.as_1_id))
+    )
+  except Exception as e:
+    log.error('Erro ao identificar ' + self.name)
+    print(e)
+    return False
+  else:
+    log.info(self.name + ' Identificado(a)')
+    return True
 ```
 ### Click by
 1. Chama find_by_*referencia*()
@@ -160,8 +161,8 @@ As funções da classe ao serem chamadas (find, click e set), executará as aç�
 
 ```python
     def click_by_id(self):
-        Element.find_by_id(self)
-        return Element._click(self)
+  Element.findBy_ID(self)
+  return Element._click(self)
 ```
 
 ### Set by
@@ -184,8 +185,8 @@ As funções da classe ao serem chamadas (find, click e set), executará as aç�
 
 ```python
     def set_by_class(self, info):
-        Element.find_by_class(self)
-        return Element._set(self, info)
+  Element.findBy_Class(self)
+  return Element._set(self, info)
 ```
 
 
@@ -204,9 +205,9 @@ As funções da página é dividida em:
 
 ```python
 def check_page_welcome(driver):
-    p = Element(driver, 'Tela Welcome')
-    p.as_class = 'our-story-card-title'
-    return p.find_by_class()
+  p = Element(driver, 'Tela Welcome')
+  p.as_2_class = 'our-story-card-title'
+  return p.findBy_Class()
 ```
 
 ### Click
@@ -216,9 +217,9 @@ def check_page_welcome(driver):
 
 ```python
 def click_signin_welcome(driver):
-    s = Element(driver, 'botão sign in de Welcome')
-    s.as_text = 'Sign In'
-    return s.click_by_text()
+  s = Element(driver, 'botão sign in de Welcome')
+  s.as_5_text = 'Sign In'
+  return s.click_by_text()
 ```
 
 ### Set
@@ -228,9 +229,9 @@ def click_signin_welcome(driver):
 
 ```python
 def set_email(driver, email_or_number):
-    e = Element(driver, 'email')
-    e.as_id = 'id_userLoginId'
-    return e.set_by_id(email_or_number)
+  e = Element(driver, 'email')
+  e.as_1_id = 'id_userLoginId'
+  return e.set_by_id(email_or_number)
 ```
 
 ## 🧪 Test
