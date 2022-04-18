@@ -247,7 +247,7 @@ Como base para o teste, será importado:
 ```python
 from selenium import webdriver
 from controller import format
-from model import login
+from model import P01_Login
 import unittest
 ```
 

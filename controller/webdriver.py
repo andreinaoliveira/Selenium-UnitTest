@@ -83,7 +83,6 @@ class Element:
             self._code(code)
         except Exception as e:
             log.error('Erro ao identificar ' + self.name)
-            print(e)
             return False
         else:
             log.info(self.name + ' Identificado(a)')
@@ -104,7 +103,6 @@ class Element:
             self.element.click()
         except Exception as e:
             log.error('Erro ao clicar em ' + self.name)
-            print(e)
             return False
         else:
             log.info(self.name + ' Clicado(a)')
@@ -126,7 +124,6 @@ class Element:
             self.element.send_keys(info)
         except Exception as e:
             log.error('Erro ao escerver ' + self.name)
-            print(e)
             return False
         else:
             log.info(self.name + ' Inserido(a)')
