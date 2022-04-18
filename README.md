@@ -47,7 +47,7 @@ Para exemplificar o funcionamento da base será automatizado a tela de login do 
 ## 🕹 Controller
 
 ### /format.py
-Contem a função titleTest() recebendo testName. Recebendo o nome do teste, quando a função é chamada imprime o nome do teste de forma mais amigável no terminal. Essa função é chamado em test.
+Contem a função titleTest() recebendo testName. Quando a função é chamada imprime o nome do teste passado por parâmetro de forma mais amigável no terminal. Essa função é chamada para cada teste do unittest localizados na pasta test.
 ```python
 def titleTest(testName):
     print(100 * '-')
@@ -64,7 +64,7 @@ Exemplo da impressão:
 
 ### /log.py
 
-Importa a biblioteca de loggin e formata a mensagem de log. Nesse arquivo é criado as funções debug(), info() e error(). Cada função recebe a mensagem que será enviada como log. Essas funções são chamadas em webdriver.
+Importa a biblioteca de loggin e formata a mensagem de log. Nesse arquivo é criado as funções debug(), info() e error(). Cada função recebe a mensagem que será enviada como log. Essas funções são chamadas em controller/webdriver.
 
 ```python
 import logging
@@ -87,9 +87,12 @@ def error(message):
 Em webdriver.py é criada a classe Element com os seguintes atribuitos e importações:
 - driver: recebe o webdriver que será criado apenas no teste.
 - name: nome do elemento ex.: Botão Sign In. O nome será enviado apenas nos log's. 
-- as_id/class/css/xpath/text: é a referência do elemento. É necessário atribuir valor a um dos itens para poder usar as funções da classe. 
+- element: Ao ser encontrado, o elemento é salvo nesse atributo.
+- as_Code_Type...: É a referência do elemento. É necessário atribuir valor a um dos itens para poder usar as funções da classe. 
 
 ```python
+import os
+import sys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -101,99 +104,127 @@ class Element:
     def __init__(self, driver, name):
         self.driver = driver
         self.name = name
-        self.as_id = None
-        self.as_class = None
-        self.as_css = None
-        self.as_xpath = None
-        self.as_text = None
+        self.element = None
+        self.as_1_ID = None
+        self.as_2_CLASS_NAME = None
+        self.as_3_NAME = None
+        self.as_4_TAG_NAME = None
+        self.as_5_LINK_TEXT = None
+        self.as_6_PARTIAL_LINK_TEXT = None
+        self.as_7_CSS_SELECTOR = None
+        self.as_8_XPATH = None
 ```
 
-Para cada referência (id, class, css, xpath e text) há uma função find_by_*referencia*(), click_by_*referencia*() e set_by_*referencia*(). 
+As funções da classe ao serem chamadas (find, click e set), executará as ações e retornará [True] ou [False] de acordo com o sucesso ou não da atividade. Portanto, além de executar a ação você poderá comparar o resultado, por exemplo, checar se retornou True, ou seja, checar se a ação foi executada com sucesso.
 
-A lógica da função para cada referência é a mesma, a diferença consta apenas quando o código tiver por exemplo "self.as_id" ou "By.ID" o temo "ID" deve ser substituído pela refereência correspondente a função, ou seja, find_by_xpath utilizada self.as_xpath e By.XPath.
-
-As funções da classe ao serem chamadas (find, click e set), executará as ações e retornará [True] ou [False] de acordo com o sucesso ou não da atividade. Portanto, além de executar a ação você poderá comparar o resultado, por exemplo, checar se retornou True, ou seja, checar se a ação executado com sucesso.
-
-### Find by
+### Find
 1. A Função tenta localizar o elemento e envia um log informando essa tentativa.
 2. Não encontrando, imprime o log de erro e retorna Falso.
 3. Encontrando, imprime log informando sucesso e retorna True.
 
 ```python
-    def findBy_ID(self):
-  """
-  Encontra um elemento web.
-  :return: boolean
-  """
-  global element
-  try:
-    log.degub('Buscando ' + self.name)
-    element = WebDriverWait(self.driver, 10).until(
-      EC.presence_of_element_located((By.ID, self.as_1_id))
-    )
-  except Exception as e:
-    log.error('Erro ao identificar ' + self.name)
-    print(e)
-    return False
-  else:
-    log.info(self.name + ' Identificado(a)')
-    return True
+    def find(self, code):
+        try:
+            log.degub('Buscando ' + self.name)
+            self._code(code)
+        except Exception as e:
+            log.error('Erro ao identificar ' + self.name)
+            return False
+        else:
+            log.info(self.name + ' Identificado(a)')
+            return True
 ```
-### Click by
-1. Chama find_by_*referencia*()
-2. Não encontrando, imprime o log de erro e retorna Falso
-3. Função _ click() tenta clicar no elemento.
+
+### __Code
+
+A função é chamada na função anterior, find(). Recebe um valor inteiro na variável code, o valor está no range de 1 a 8 e se refere ao tipo de referência do elemento (id, class etc.) o código é o mesmo do atributo as_Code_Type da classe. Exemplo, instanciando a classe como as_1_ID o code da função deve ser _ code(1) para buscar por ID.
+O ideal é que a função seja chamada apenas pelo find(), nunca diretamente.
+
+```python
+    def _code(self, code):
+        if code == 1:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.ID, self.as_1_ID))
+            )
+        elif code == 2:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, self.as_2_CLASS_NAME))
+            )
+        elif code == 3:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.NAME, self.as_3_NAME))
+            )
+        elif code == 4:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.TAG_NAME, self.as_4_TAG_NAME))
+            )
+        elif code == 5:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.LINK_TEXT, self.as_5_LINK_TEXT))
+            )
+        elif code == 6:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, self.as_6_PARTIAL_LINK_TEXT))
+            )
+        elif code == 7:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, self.as_7_CSS_SELECTOR))
+            )
+        elif code == 8:
+            self.element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, self.as_8_XPATH))
+            )
+        else:
+            log.error('Código informado em find() fora do range ou inválido.')
+            os.system("pause")
+            sys.exit()
+```
+
+### Click
+1. Chama find() para atribuir valor ao atributo element da classe.
+2. Tenta clicar no elemento identificado.
 4. Não conseguindo, imprime o log de erro e retorna Falso
 5. Conseguindo, imprime log informando sucesso e retorna True
 
 ```python
-    def _click(self):
+    def click(self, code):
+        Element.find(self, code)
         try:
-            element.click()
+            self.element.click()
         except Exception as e:
             log.error('Erro ao clicar em ' + self.name)
-            print(e)
             return False
         else:
             log.info(self.name + ' Clicado(a)')
             return True
 ```
 
-```python
-    def click_by_id(self):
-  Element.findBy_ID(self)
-  return Element._click(self)
-```
-
 ### Set by
-1. Chama find_by_*referencia*().
-2. retorna Element._ set().
-3. Função _ set() tenta clicar no elemento.
+1. Chama find() para atribuir valor ao atributo element da classe.
+2. Tenta clicar no elemento identificado.
 4. Não conseguindo, imprime o log de erro e retorna Falso.
 5. Conseguindo, imprime log informando sucesso e retorna True.
 
 ```python
-    def _set(self, info):
+    def set(self, code, info):
+        Element.find(self, code)
         try:
-            element.send_keys(info)
+            self.element.send_keys(info)
         except Exception as e:
             log.error('Erro ao escerver ' + self.name)
-            print(e)
+            return False
         else:
             log.info(self.name + ' Inserido(a)')
+            return True
 ```
-
-```python
-    def set_by_class(self, info):
-  Element.findBy_Class(self)
-  return Element._set(self, info)
-```
-
 
 ## 🔧 Model
-Modelo armazena todas as páginas de um sistema web em aquivos .py diferentes. O ideal é que os principais elementos de uma página sejam instanciandos nesse arquivo através da classe Element de controller/webdriver. Para exemplificar, criamos o modelo da página de login da Netflix (login.py)
+Modelo armazena todas as páginas de um sistema web em aquivos .py diferentes. Cada arquivo possui uma classe que se refere a página web em questão. O ideal é que os principais elementos da página sejam instanciados nessa classe herdando da classe Element de controller/webdriver. Para exemplificar, criamos o modelo da página de login da Netflix (login.py)
 
-As funções da página é dividida em: 
+Como atribuito possuir:
+- driver
+
+As funções da página são divididas em: 
 - Check: Checa se está na página, checa se alguma mensagem de erro é apresentada etc.
 - Click: realiza o clique em qualquer elemento da página.
 - Set: Insere alguma informação na página.
@@ -204,10 +235,10 @@ As funções da página é dividida em:
 3. Retorna a função find que busca a referência informada.
 
 ```python
-def check_page_welcome(driver):
-  p = Element(driver, 'Tela Welcome')
-  p.as_2_class = 'our-story-card-title'
-  return p.findBy_Class()
+    def check_page_welcome(self):
+        e = Element(self.driver, '[Welcome] Page')
+        e.as_2_CLASS_NAME = 'our-story-card-title'
+        return e.find(2)
 ```
 
 ### Click
@@ -216,10 +247,10 @@ def check_page_welcome(driver):
 3. Retorna a função click que tentará clicar na referência informada.
 
 ```python
-def click_signin_welcome(driver):
-  s = Element(driver, 'botão sign in de Welcome')
-  s.as_5_text = 'Sign In'
-  return s.click_by_text()
+    def click_signin_welcome(self):
+        e = Element(self.driver, '[Welcome] Sign In button')
+        e.as_5_LINK_TEXT = 'Sign In'
+        return e.click(5)
 ```
 
 ### Set
@@ -228,10 +259,10 @@ def click_signin_welcome(driver):
 3. Retorna a função set que tentará inserir uma informação na referência informada.
 
 ```python
-def set_email(driver, email_or_number):
-  e = Element(driver, 'email')
-  e.as_1_id = 'id_userLoginId'
-  return e.set_by_id(email_or_number)
+    def set_email(self, email_or_number):
+        e = Element(self.driver, '[Login] Email')
+        e.as_1_ID = 'id_userLoginId'
+        return e.set(1, email_or_number)
 ```
 
 ## 🧪 Test
