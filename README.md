@@ -16,9 +16,10 @@
     - <a href="#formatpy">/fortmat.py</a>
     - <a href="#logpy">/log.py</a>
     - <a href="#webdriverpy">/webdriver.py</a>
-      - <a href="#find-by">Find By</a>
-      - <a href="#click-by">Click By</a>
-      - <a href="#set-by">Set By</a>
+      - <a href="#code">Code</a>
+      - <a href="#find">Find</a>
+      - <a href="#click">Click</a>
+      - <a href="#set">Set</a>
   - <a href="#-model">Model</a>
     - <a href="#check">Check</a>
     - <a href="#click">Click</a>
@@ -117,24 +118,6 @@ class Element:
 
 As funções da classe ao serem chamadas (find, click e set), executará as ações e retornará [True] ou [False] de acordo com o sucesso ou não da atividade. Portanto, além de executar a ação você poderá comparar o resultado, por exemplo, checar se retornou True, ou seja, checar se a ação foi executada com sucesso.
 
-### Find
-1. A Função tenta localizar o elemento e envia um log informando essa tentativa.
-2. Não encontrando, imprime o log de erro e retorna Falso.
-3. Encontrando, imprime log informando sucesso e retorna True.
-
-```python
-    def find(self, code):
-        try:
-            log.degub('Buscando ' + self.name)
-            self._code(code)
-        except Exception as e:
-            log.error('Erro ao identificar ' + self.name)
-            return False
-        else:
-            log.info(self.name + ' Identificado(a)')
-            return True
-```
-
 ### __Code
 
 A função é chamada na função anterior, find(). Recebe um valor inteiro na variável code, o valor está no range de 1 a 8 e se refere ao tipo de referência do elemento (id, class etc.) o código é o mesmo do atributo as_Code_Type da classe. Exemplo, instanciando a classe como as_1_ID o code da função deve ser _ code(1) para buscar por ID.
@@ -180,6 +163,24 @@ O ideal é que a função seja chamada apenas pelo find(), nunca diretamente.
             sys.exit()
 ```
 
+### Find
+1. A Função tenta localizar o elemento e envia um log informando essa tentativa.
+2. Não encontrando, imprime o log de erro e retorna Falso.
+3. Encontrando, imprime log informando sucesso e retorna True.
+
+```python
+    def find(self, code):
+        try:
+            log.degub('Buscando ' + self.name)
+            self._code(code)
+        except Exception as e:
+            log.error('Erro ao identificar ' + self.name)
+            return False
+        else:
+            log.info(self.name + ' Identificado(a)')
+            return True
+```
+
 ### Click
 1. Chama find() para atribuir valor ao atributo element da classe.
 2. Tenta clicar no elemento identificado.
@@ -199,7 +200,7 @@ O ideal é que a função seja chamada apenas pelo find(), nunca diretamente.
             return True
 ```
 
-### Set by
+### Set
 1. Chama find() para atribuir valor ao atributo element da classe.
 2. Tenta clicar no elemento identificado.
 4. Não conseguindo, imprime o log de erro e retorna Falso.
@@ -305,24 +306,18 @@ if __name__ == '__main__':
 
 Considerando que as funções de teste foram escritas, ao final do teste o UnitTest informa quantos testes passaram e quantatos falharam indicando qual teste deu erro.
 
-<table>
-  <tr>
-    <td>
-      <b>Passed</b>
-    </td>
-    <td>
-      <b>Fail</b>
-    </td>
-  </tr>
-  <tr>
-    <td>
-       <img src="https://user-images.githubusercontent.com/51168329/159310993-bce3a088-b03c-453c-a667-e2f8e425cf6d.png">
-    </td>
-    <td>
-       <img src="https://user-images.githubusercontent.com/51168329/159309952-2e2b7576-1517-4aea-8118-4181d84931bc.png">
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <table>
+    <tr>
+      <td><p><b>PASS</b></p></td>
+      <td><p><b>FAIL</b></p></td>
+    </tr>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/51168329/159310993-bce3a088-b03c-453c-a667-e2f8e425cf6d.png"></td>
+      <td><img src="https://user-images.githubusercontent.com/51168329/159309952-2e2b7576-1517-4aea-8118-4181d84931bc.png"></td>
+    </tr>
+  </table>
+</div>
 
 ## 👩🏼‍💻 Cenários de Teste
 
