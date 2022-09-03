@@ -11,6 +11,7 @@
 # 🧾 Índice
 - <a href="#-sobre">Sobre</a>
 - <a href="#-índice">Índice</a>
+- <a href="#-instalação">Instalação</a>
 - <a href="#-desenvolvimento">Desenvolvimento</a>
   - <a href="#-controller">Controller</a>
     - <a href="#formatpy">/fortmat.py</a>
