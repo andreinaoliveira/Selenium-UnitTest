@@ -44,11 +44,31 @@ Para exemplificar o funcionamento da base será automatizado a tela de login do 
 - CT04 - Usuário Inválido
 - CT05 - Usuário Válido
 
+# 💾 Instalação
+
+**Projeto**
+
+```
+git clone https://github.com/andreinaoliveira/QA-Base-Automation.git
+```
+
+**Dependencias**
+* Python 3
+
+**Módulos**
+
+Os módulos devem ser instalados no cmd com os comandos abaixos
+```
+pip install selenium
+pip install webdriver-manager
+```
+
 # 🖥 Desenvolvimento
 ## 🕹 Controller
 
 ### /format.py
 Contem a função titleTest() recebendo testName. Quando a função é chamada imprime o nome do teste passado por parâmetro de forma mais amigável no terminal. Essa função é chamada para cada teste do unittest localizados na pasta test.
+
 ```python
 def titleTest(testName):
     print(100 * '-')
