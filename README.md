@@ -337,13 +337,18 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
         self.assertTrue(login.check_page_welcome(self.driver))
 ```
 
-**Execução Assistida**
-
-<img src="https://user-images.githubusercontent.com/51168329/159390569-8cfff750-2593-421f-9b83-dc04d3e375a0.gif" width=600px>
-
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png" width=600px>
+<div align="center">
+  <table>
+    <tr>
+      <th><p><b>Execução Assistida</b></p></th> 
+      <th><p><b>Log's</b></p></th>
+    </tr>
+    <tr>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159390569-8cfff750-2593-421f-9b83-dc04d3e375a0.gif" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png" width=600px></th>
+    </tr>
+  </table>
+</div>
 
 ### CT02 - Acessar tela de Login
 **Objetivo**
@@ -356,20 +361,25 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
         login.click_signin_welcome(self.driver)
         self.assertTrue(login.check_page_login(self.driver))
 ```
-**Execução Assistida**
 
-<img src="https://user-images.githubusercontent.com/51168329/159391105-1be2aa4f-1808-48b6-8cd0-5c4ef811b470.gif" width=600px>
-
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png" width=600px>
+<div align="center">
+  <table>
+    <tr>
+      <th><p><b>Execução Assistida</b></p></th> 
+      <th><p><b>Log's</b></p></th>
+    </tr>
+    <tr>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159391105-1be2aa4f-1808-48b6-8cd0-5c4ef811b470.gif" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png" width=600px></th>
+    </tr>
+  </table>
+</div>
 
 ### CT03 - Senha Inválida
 **Objetivo**
 - Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo um e-mail válido e senha inválida no site, checar se a mensagem referente a senha errada é apresentada.
 
 **Código**
-
 ```python
     def test_CT03_InvalidPassword(self):
         format.titleTest("CT03 - Senha inválida")
@@ -380,20 +390,24 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
         self.assertTrue(login.check_error_passwordInvalid(self.driver))
 ```
 
-**Execução Assistida**
-                                                                                                                
-<img src="https://user-images.githubusercontent.com/51168329/159392417-3f95dfeb-8e5d-45d6-8dae-6b55e0d0c963.gif" width=600px>
-
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159393494-7d307bbe-d090-473f-b426-68631896d391.png" width=600px>
+<div align="center">
+  <table>
+    <tr>
+      <th><p><b>Execução Assistida</b></p></th> 
+      <th><p><b>Log's</b></p></th>
+    </tr>
+    <tr>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159392417-3f95dfeb-8e5d-45d6-8dae-6b55e0d0c963.gif" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159393494-7d307bbe-d090-473f-b426-68631896d391.png" width=600px></th>
+    </tr>
+  </table>
+</div>
 
 ### CT04 - Usuário Inválido
 **Objetivo**
 - Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo e-mail e senha com dados inexistente no site, checar se a mensagem de que o usuário não existe é apresentada.
 
 **Código**
-
 ```python
     def test_CT04_InvalidAccount(self):
         format.titleTest("CT04 - Usuário inválido")
@@ -404,20 +418,24 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
         self.assertTrue(login.check_error_userInvalid(self.driver))
 ```
 
-**Execução Assistida**
-
-<img src="https://user-images.githubusercontent.com/51168329/159392369-420cc93b-d050-49ca-8fc1-a2dff3a1937e.gif" width=600px>
-
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159303816-a1f2c023-0480-43f0-a23d-7a96c1f70477.png" width=600px>
-
+<div align="center">
+  <table>
+    <tr>
+      <th><p><b>Execução Assistida</b></p></th> 
+      <th><p><b>Log's</b></p></th>
+    </tr>
+    <tr>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159392369-420cc93b-d050-49ca-8fc1-a2dff3a1937e.gif" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png" width=600px></th>
+    </tr>
+  </table>
+</div>
                                                                                                              
 ### CT05 - Usuário Válido
 **Objetivo**
 - Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo e-mail e senha com dados existentes no site e clicando em "Sign In", checar se a tela de Perfis é carregada.
-**Código**
 
+**Código**
 ```python
     def test_CT05_ValidUser(self):
         format.titleTest("CT05 - Usuário Válido")
@@ -434,14 +452,20 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
         self.assertTrue(login.check_page_profiles(self.driver))
 ```
 
-**Execução Assistida**
-<img src="https://user-images.githubusercontent.com/51168329/188284644-58c144c0-7ab3-47f6-8496-a0a9e804939f.gif" width=600px>
-
-**Log's**
-
-<img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png" width=600px>
-
-
-**Simulando erro**
-
-<img src="https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png" width=600px>
+<div align="center">
+  <table>
+    <tr>
+      <th><p><b>Execução Assistida</b></p></th> 
+      <th><p><b>Log's</b></p></th>
+    </tr>
+    <tr>
+      <th><img src="https://user-images.githubusercontent.com/51168329/188284644-58c144c0-7ab3-47f6-8496-a0a9e804939f.gif" width=600px></th>
+      <th>
+      <p>[PASS] Log quando usuário correto</p>
+      <img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png" width=600px>
+      <p>[FAIL] Log quando usuário incorreto</p>
+      <img src="https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png" width=600px>
+      </th>
+    </tr>
+  </table>
+</div>
