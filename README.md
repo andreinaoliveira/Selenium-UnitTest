@@ -435,6 +435,7 @@ Considerando que as funções de teste foram escritas, ao final do teste o UnitT
 ```
 
 **Execução Assistida**
+<img src="https://user-images.githubusercontent.com/51168329/188284644-58c144c0-7ab3-47f6-8496-a0a9e804939f.gif" width=600px>
 
 **Log's**
 
