@@ -1,6 +1,5 @@
 import os
 import sys
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -81,7 +80,7 @@ class Element:
         try:
             log.degub('Buscando ' + self.name)
             self._code(code)
-        except Exception as e:
+        except Exception:
             log.error('Erro ao identificar ' + self.name)
             return False
         else:
@@ -101,7 +100,7 @@ class Element:
         Element.find(self, code)
         try:
             self.element.click()
-        except Exception as e:
+        except Exception:
             log.error('Erro ao clicar em ' + self.name)
             return False
         else:
@@ -116,13 +115,13 @@ class Element:
         """
         Insere uma informação em um elemento web.
         :param code: Tipo do elemento. Codigo localizado em 'as_COD_...'
-        :param info: informação
+        :param info: informação que será inserida
         :return: boolean
         """
         Element.find(self, code)
         try:
             self.element.send_keys(info)
-        except Exception as e:
+        except Exception:
             log.error('Erro ao escerver ' + self.name)
             return False
         else:
