@@ -16,7 +16,7 @@
     - <a href="#formatpy">/fortmat.py</a>
     - <a href="#logpy">/log.py</a>
     - <a href="#webdriverpy">/webdriver.py</a>
-      - <a href="#code">Code</a>
+      - <a href="#__code">Code</a>
       - <a href="#find">Find</a>
       - <a href="#click">Click</a>
       - <a href="#set">Set</a>
