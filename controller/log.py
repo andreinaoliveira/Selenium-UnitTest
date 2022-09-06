@@ -1,10 +1,5 @@
 import logging
-log_format = "\33[37m{'[ %(levelname)s ] %(asctime)s :: %(name)s :: %(module)s :: %(message)s'}\33[0m"
-FORMATS = {
-    logging.DEBUG: f"\33[36m{log_format}\33[0m",
-    logging.INFO: f"\33[32m{log_format}\33[0m",
-    logging.ERROR: f"\33[31m{log_format}\33[0m"
-}
+log_format = "\33[37m[ %(levelname)s ] %(asctime)s :: %(name)s :: %(module)s :: %(message)s\33[1m"
 logging.basicConfig(format=log_format, level=logging.INFO, filemode='w')
 
 
