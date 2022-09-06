@@ -8,9 +8,17 @@
   <a href="https://github.com/andreinaoliveira"><img src="https://img.shields.io/github/followers/andreinaoliveira?style=social"></a>
 </div>
 
+# 💬 Sobre
+Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e com a estrutura organizacional CMT (Controller Model Test), uma adaptação do MVC.
+
+Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. para cobrir os seguintes cenários de teste:
+- CT01 - Acessar tela de Boas Vinda
+- CT02 - Acessar tela de Login
+- CT03 - Senha Inválida
+- CT04 - Usuário Inválido
+- CT05 - Usuário Válido
+
 # 🧾 Índice
-- <a href="#-sobre">Sobre</a>
-- <a href="#-índice">Índice</a>
 - <a href="#-instalação">Instalação</a>
 - <a href="#-desenvolvimento">Desenvolvimento</a>
   - <a href="#-controller">Controller</a>
@@ -35,15 +43,6 @@
   - <a href="#ct04---usuário-inválido">CT04 - Usuário Inválido</a>
   - <a href="#ct05---usuário-válido">CT05 - Usuário Válido</a>
 
-# 💬 Sobre
-Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e com a estrutura organizacional CMT (Controller Model Test), uma adaptação do MVC.
-
-Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. para cobrir os seguintes cenários de teste:
-- CT01 - Acessar tela de Boas Vinda
-- CT02 - Acessar tela de Login
-- CT03 - Senha Inválida
-- CT04 - Usuário Inválido
-- CT05 - Usuário Válido
 
 # 💾 Instalação
 
