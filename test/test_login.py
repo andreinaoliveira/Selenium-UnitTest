@@ -8,7 +8,7 @@ import unittest
 class test(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-        self.driver.get('https://www.netflix.com/br-en/')
+        self.driver.get('https://www.netflix.com/br/')
         self.login = Login(self.driver)
 
     def test_CT01_AccessWelcome(self):
@@ -42,8 +42,6 @@ class test(unittest.TestCase):
 
         email = input('Informe um e-mail váido: ')
         senha = input('Informe uma senha válida: ')
-        
-        print()
 
         self.login.set_email(email)
         self.login.set_password(senha)

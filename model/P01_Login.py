@@ -1,5 +1,6 @@
 from controller.webdriver import Element
 
+
 class Login:
     def __init__(self, driver):
         self.driver = driver
@@ -40,8 +41,9 @@ class Login:
         :return: boolean
         """
         e = Element(self.driver, '[Login] Create a new account')
-        e.as_5_LINK_TEXT = 'create a new account'
-        return e.find(5)
+        e.as_7_CSS_SELECTOR = 'a[href="/"]'
+
+        return e.find(7)
 
     def check_error_passwordInvalid(self):
         """
@@ -49,8 +51,8 @@ class Login:
         :return: boolean
         """
         e = Element(self.driver, '[Login] Reset your password')
-        e.as_6_PARTIAL_LINK_TEXT = 'reset your password'
-        return e.find(6)
+        e.as_7_CSS_SELECTOR = 'a[href="/loginHelp"]'
+        return e.find(7)
 
     ####################################################################################################################
     #                                                Click                                                             #
@@ -59,22 +61,20 @@ class Login:
     def click_signin_welcome(self):
         """
         Clica no botão Sign In da tela Welcome
-        :param driver: webdriver
         :return: boolean
         """
-        s = Element(self.driver, '[Welcome] Sign In button')
-        s.as_5_LINK_TEXT = 'Sign In'
-        return s.click(5)
+        e = Element(self.driver, '[Welcome] Sign In button')
+        e.as_7_CSS_SELECTOR = 'a[href="/login"]'
+        return e.click(7)
 
     def click_signin_login(self):
         """
         Clica no botão Sign In da tela Login
-        :param driver: webdriver
         :return: boolean
         """
-        s = Element(self.driver, '[Login] Sign In button')
-        s.as_2_CLASS_NAME = 'login-button'
-        return s.click(2)
+        e = Element(self.driver, '[Login] Sign In button')
+        e.as_2_CLASS_NAME = 'login-button'
+        return e.click(2)
 
     ####################################################################################################################
     #                                                  SET                                                             #
