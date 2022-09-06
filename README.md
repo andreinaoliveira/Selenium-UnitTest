@@ -36,7 +36,7 @@
   - <a href="#ct05---usuário-válido">CT05 - Usuário Válido</a>
 
 # 💬 Sobre
-Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e com a estrutura organizacional MTC (Model-Test-Controller), uma adaptação do MVC.
+Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e com a estrutura organizacional CMT (Controller Model Test), uma adaptação do MVC.
 
 Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. para cobrir os seguintes cenários de teste:
 - CT01 - Acessar tela de Boas Vinda
