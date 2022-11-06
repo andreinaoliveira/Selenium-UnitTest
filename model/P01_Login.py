@@ -17,7 +17,7 @@ class Login:
         p.as_2_CLASS_NAME = 'our-story-card-title'
         return p.find(2)
 
-    def check_page_login(self):
+    def _check_page_login(self):
         """
         Checa se o navegador está na página.
         :return: boolean
@@ -99,3 +99,16 @@ class Login:
         p = Element(self.driver, '[Login] Password')
         p.as_1_ID = 'id_password'
         return p.set(1, password)
+
+    ####################################################################################################################
+    #                                                ACTIONS                                                           #
+    ####################################################################################################################
+
+    def login(self, email_or_number, password):
+        self.check_page_welcome()
+        self.click_signin_welcome()
+        self.check_page_login()
+        self.set_email(email_or_number)
+        self.set_password(password)
+        self.click_signin_login()
+        return 1

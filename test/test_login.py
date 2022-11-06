@@ -11,42 +11,22 @@ class test(unittest.TestCase):
         self.driver.get('https://www.netflix.com/br/')
         self.login = Login(self.driver)
 
-    def test_CT01_AccessWelcome(self):
-        format.titleTest("CT01 - Acessar tela de Boas Vindas")
-        self.assertTrue(self.login.check_page_welcome())
-
-    def test_CT02_AccessLogin(self):
-        format.titleTest("CT02 - Acessar tela de login")
-        self.login.click_signin_welcome()
-        self.assertTrue(self.login.check_page_login())
-
     def test_CT03_InvalidPassword(self):
         format.titleTest("CT03 - Senha inválida")
-        self.login.click_signin_welcome()
-        self.login.set_email('teste@gmail.com')
-        self.login.set_password('Teste@1234')
-        self.login.click_signin_login()
+        self.login.login('teste@gmail.com', 'Teste@1234')
         self.assertTrue(self.login.check_error_passwordInvalid())
 
     def test_CT04_InvalidAccount(self):
         format.titleTest("CT04 - Usuário inválido")
-        self.login.click_signin_welcome()
-        self.login.set_email('testeSelenium@gmail.com')
-        self.login.set_password('Teste@1234')
-        self.login.click_signin_login()
+        self.login.login('testeSelenium@gmail.com', 'Teste@1234')
         self.assertTrue(self.login.check_error_userInvalid())
 
     def test_CT05_ValidUser(self):
         format.titleTest("CT05 - Usuário Válido")
-        self.login.click_signin_welcome()
-
         email = input('Informe um e-mail váido: ')
         senha = input('Informe uma senha válida: ')
         print()
-
-        self.login.set_email(email)
-        self.login.set_password(senha)
-        self.login.click_signin_login()
+        self.login.login(email, senha)
         self.assertTrue(self.login.check_page_profiles())
 
     def tearDown(self):
